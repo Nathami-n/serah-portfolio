@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Header } from "./components";
+import { Home, Header, Albums } from "./components";
 const App = () => {
   return (
     <Routes>
@@ -12,6 +12,7 @@ const App = () => {
           </Home>
         }
       />
+      <Route exact path="/Albums" element={<Albums><Header/></Albums>} />
     </Routes>
   );
 };

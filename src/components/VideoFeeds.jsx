@@ -1,24 +1,19 @@
 import VideoCard from "./VideoCard";
-import { getSerahData } from "../utils/fetchData";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { data } from "../utils/data";
 
 const VideoFeeds = () => {
-  const [videoData, setVideoData] = useState([]);
-  useEffect(() => {
-    getSerahData()
-    .then(data=> {
-        setVideoData(data);
-    })
-    .catch(e=> {
-        console.error(e.message);
-    })
-  }, []);
+  const [videoData, setVideoData] = useState(data);
   return (
-    <div className="grid grid-cols-3 gap-1">
-     {videoData.items?.map((video, idx)=> {
-        return <VideoCard key={idx} video={video}/>
-     })}
-    </div>
+    <>
+      
+      <div className="grid md:grid-cols-3 md:gap-4 p-9">
+        <div className=" hidden md:block md:col-span-2 row-span-2 bg-blue-400 rounded-lg shadow-lg">hell</div>
+        {videoData?.map((video, idx) => {
+          return <VideoCard key={idx} video={video} />;
+        })}
+      </div>
+    </>
   );
 };
 

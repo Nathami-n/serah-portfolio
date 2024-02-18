@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="min-h-screen md:w-[200px] flex flex-col justify-between p-2 items-center">
+    <div className="min-h-screen md:w-[200px] md:flex flex-col justify-between p-2 items-center hidden">
       <div>
         <ul className="w-full px-5 flex flex-col gap-3 mt-4">
           <li>
-            <Link className="navlink" path="/">
+            <Link className="navlink" to="/">
               <CiBank className="navicon" />
               <span className="navspan">
                 Home
@@ -15,13 +15,13 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link path="/" className="navlink">
+            <Link to="/Albums" className="navlink">
               <CiMusicNote1 className="navicon" />
               <span className="navspan">Tracks</span>
             </Link>
           </li>
           <li>
-            <Link path="/" className="navlink">
+            <Link to="/" className="navlink">
               <CiPassport1 className="navicon" />
               <span className="navspan">About</span>
             </Link>
