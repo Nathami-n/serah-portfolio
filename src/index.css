@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+  .navlinks {
+    @apply flex items-center gap-3 justify-center
+  }
+
+  .navicon {
+    @apply text-4xl inline bg-yellow-700 rounded-full text-white px-1
+  }
+
+  .navspan {
+    @apply text-pink-200 ml-3 text-lg font-serif font-extrabold
+  }
