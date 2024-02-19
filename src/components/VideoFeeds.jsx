@@ -7,8 +7,8 @@ const VideoFeeds = () => {
   return (
     <>
       
-      <div className="grid md:grid-cols-3 md:gap-4 p-9">
-        <div className=" hidden md:block md:col-span-2 row-span-2 bg-blue-400 rounded-lg shadow-lg">hell</div>
+      <div className=" md:gap-4 p-20 md:p-5 flex flex-wrap md:grid md:grid-cols-2 lg:grid-cols-3 shadow-lg shadow-slate-600 rounded-lg border border-[#5f1803] bg-[#0e0401]  md:h-[90vh] md:overflow-y-scroll">
+        {/* <div className=" hidden md:block md:col-span-2 row-span-2 bg-blue-400 rounded-lg shadow-lg">hell</div> */}
         {videoData?.map((video, idx) => {
           return <VideoCard key={idx} video={video} />;
         })}

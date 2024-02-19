@@ -3,16 +3,16 @@ import { Home, Header, Albums } from "./components";
 const App = () => {
   return (
     <Routes>
+      <Route exact path="/" element={<Home />} />
       <Route
         exact
-        path="/"
+        path="/Albums"
         element={
-          <Home>
+          <Albums>
             <Header />
-          </Home>
+          </Albums>
         }
       />
-      <Route exact path="/Albums" element={<Albums><Header/></Albums>} />
     </Routes>
   );
 };

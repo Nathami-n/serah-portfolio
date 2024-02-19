@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors:{
-        primary:'#160F0E'
+        primary:'#160F0d'
       }
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [],
 }

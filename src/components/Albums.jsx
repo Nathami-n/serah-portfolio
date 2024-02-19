@@ -1,8 +1,13 @@
-
-const Albums = ({children}) => {
+import { Hero } from "./";
+const Albums = ({ children }) => {
   return (
-    <div>{children}</div>
-  )
-}
+    <>
+   <div className="flex bg-primary min-h-screen">
+   {children}
+      <Hero/>
+   </div>
+    </>
+  );
+};
 
-export default Albums
+export default Albums;

@@ -1,11 +1,7 @@
-import {Hero} from './'
-const Home = ({children}) => {
-  return (
-   <main className="flex bg-primary  min-h-screen">
+const Home = ({ children }) => {
+  return <main className="flex min-h-screen">
     {children}
-    <Hero/>
-   </main>
-  )
-}
+  </main>
+};
 
-export default Home
+export default Home;

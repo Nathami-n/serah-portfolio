@@ -14,7 +14,7 @@ const VideoCard = ({ video: { imgUrl, videoUrl, title, id } }) => {
             scale: 0.95,
           }}
           whileHover={{
-            scale: 1.025,
+            scale: 1.005,
             transition: {
               duration: 0.2,
             },
