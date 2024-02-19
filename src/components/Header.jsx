@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <>
     <div className="md:hidden fixed top-0 bg-primary w-full p-3 z-[99]"> <CiHeadphones className="navicon"/><span className="text-white font-mono font-extrabold ml-5">My Tunes</span></div>
-      <div className=" md:hidden fixed bottom-0 z-99 w-full p-3  bg-primary rounded-lg">
+      <div className=" md:hidden fixed bottom-0 z-[99] w-full p-3  bg-primary rounded-lg">
         <div>
           <ul className="flex items-center  justify-evenly gap-5">
           <li>

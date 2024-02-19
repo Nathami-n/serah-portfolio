@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import VideoModal from "./VideoModal";
 
-const VideoCard = ({ video: { imgUrl, videoUrl, title, id } }) => {
+const VideoCard = ({ video: { imgUrl, videoUrl, title, id }, yes}) => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className="w-[100%] rounded-lg shadow-lg">
@@ -20,17 +20,17 @@ const VideoCard = ({ video: { imgUrl, videoUrl, title, id } }) => {
             },
           }}
           src={imgUrl}
-          className="object-contain w-full transition-all image-full cursor-pointer bg-base-100"
+          className="object-contain w-full transition-all image-full cursor-pointer bg-base-100 rounded-md"
         />
       </div>
       <div className="flex justify-between items-center bg-gray-100">
-        <p className="font-bold">{title}</p>
-        <button onClick={()=>setOpenModal(!openModal)} className="btn btn-link text-lg">Listen</button>
+        <p className="font-bold text-nowrap">{title}</p>
       </div>
       {openModal && (
         <VideoModal
           title={title}
           image={imgUrl}
+          videoUrl={videoUrl}
           openModal={openModal}
           setOpenModal={setOpenModal}
           id={id}

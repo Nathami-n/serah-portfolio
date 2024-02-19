@@ -2,7 +2,7 @@ import { Hero } from "./";
 const Albums = ({ children }) => {
   return (
     <>
-   <div className="flex bg-primary min-h-screen">
+   <div className="flex justify-center  bg-primary overflow-y-clip">
    {children}
       <Hero/>
    </div>

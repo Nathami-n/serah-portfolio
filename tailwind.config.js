@@ -7,7 +7,11 @@ export default {
   theme: {
     extend: {
       colors:{
-        primary:'#160F0d'
+        primary:'#160F0d',
+        bodyColor:'#777990'
+      },
+      fontFamily:{
+        home:['Oswald', 'Serif']
       }
     },
   },

@@ -1,10 +1,10 @@
 import { CiMenuBurger } from "react-icons/ci";
 import VideoFeeds from "./VideoFeeds";
 
-const Hero = () => {
+const Hero = ({videoUrl}) => {
   return (
-    <div className="mt-1 sm:p-16 md:p-9 bg-primary">
-      <VideoFeeds />
+    <div className="bg-primary">
+      <VideoFeeds videoUrl={videoUrl}/>
     </div>
   );
 };
