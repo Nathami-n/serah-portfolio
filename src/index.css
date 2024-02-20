@@ -15,3 +15,6 @@
   .navspan {
     @apply text-pink-200 ml-3 text-sm  font-serif  md:inline hidden font-extrabold text-nowrap
   }
+  .mininav {
+    @apply text-2xl text-gray-900
+  }
