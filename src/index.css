@@ -18,3 +18,9 @@
   .mininav {
     @apply text-2xl text-gray-900
   }
+
+  @layer utilities {
+    .bg-player {
+      background: radial-gradient(circle, #4ac29a, #bdfff3);
+    }
+  }

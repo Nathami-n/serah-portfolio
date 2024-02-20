@@ -1,4 +1,3 @@
-import { CiMenuBurger } from "react-icons/ci";
 import VideoFeeds from "./VideoFeeds";
 
 const Hero = ({videoUrl}) => {

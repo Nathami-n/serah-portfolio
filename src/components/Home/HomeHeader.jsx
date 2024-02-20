@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const HomeHeader = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [miniNav, setMiniNav] = useState(false);
+  const [largeNav, setLargeNav] = useState(true);
   const handleOpen = () => {
     setIsNavOpen(!isNavOpen);
   };
@@ -159,11 +160,14 @@ const HomeHeader = () => {
                 <p>Pages</p>
                 <motion.button
                   className="flex items-center"
-                  onClick={() => setMiniNav(!miniNav)}
+                  onClick={() => {
+                    setLargeNav(!largeNav);
+                    setMiniNav(!setMiniNav)
+                  }}
                   whileHover={{ scale: 1.25 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  {!miniNav ? <IoIosArrowDown /> : <IoIosArrowUp />}
+                  {!largeNav ? <IoIosArrowDown /> : <IoIosArrowUp />}
                 </motion.button>
               </a>
             </li>
@@ -177,6 +181,31 @@ const HomeHeader = () => {
             serahkemusic@gmail.com
           </p>
         </div>
+
+        {largeNav && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              ease: "easeIn",
+            }}
+            className="flex w-[350px] h-[300px] absolute top-[100px] right-[350px] lg:right-[400px] xl:right-[540px] z-[9999] bg-white px-10 rounded-lg border shadow-lg"
+          >
+            <div className="grid grid-cols-2 gap-9 p-4">
+              <ul className=" flex flex-col gap-9">
+                <Link className="mininav">Home</Link>
+                <Link className="mininav">About</Link>
+                <Link className="mininav">Albums</Link>
+              </ul>
+              <ul className="flex flex-col gap-9">
+                <Link className="mininav">Events</Link>
+                <Link className=" mininav">Shop</Link>
+                <Link className="mininav">Contacts</Link>
+              </ul>
+            </div>
+          </motion.div>
+        )}
       </div>
     </nav>
   );

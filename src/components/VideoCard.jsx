@@ -23,8 +23,8 @@ const VideoCard = ({ video: { imgUrl, videoUrl, title, id }, yes}) => {
           className="object-contain w-full transition-all image-full cursor-pointer bg-base-100 rounded-md"
         />
       </div>
-      <div className="flex justify-between items-center bg-gray-100">
-        <p className="font-bold text-nowrap">{title}</p>
+      <div   onClick={() => setOpenModal(!openModal)}  className="flex  cursor-pointer justify-between items-center bg-gray-100">
+        <p className="font-bold  font-home text-gray-900 text-nowrap">{title}</p>
       </div>
       {openModal && (
         <VideoModal

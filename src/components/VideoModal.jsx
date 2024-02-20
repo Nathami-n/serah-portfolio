@@ -21,7 +21,7 @@ const VideoModal = ({
           className="flex flex-col justify-center items-center"
         >
           <motion.div layoutId={id} className="w-full">
-            <img src={image} className="w-full object-contain" />
+            <img src={image} className="w-full object-contain rounded-lg shadow-xl transition-all" />
           </motion.div>
           <motion.div
             initial={{
@@ -37,8 +37,8 @@ const VideoModal = ({
             }}
             className="bg-white p-4 w-full rounded-md"
           >
-            <h3 className="text-2xl font-bold mb-2">{title}</h3>
-           <Link to={`/video/${encodeURIComponent(videoUrl)}`}> <button className="btn btn-primary btn-block">Play</button></Link>
+            <h3 className="text-2xl font-home mb-2">{title}</h3>
+           <Link to={`/video/${encodeURIComponent(videoUrl)}`}> <button className="bg-red-500 w-full p-2 rounded-xl text-white text-2xl hover:bg-blue-400 hover:text-black hover:shadow-2xl transition-all font-home">Play</button></Link>
           </motion.div>
         </div>
       </div>
