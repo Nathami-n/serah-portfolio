@@ -3,7 +3,7 @@ export const linkData = [
     id: 1,
     heading: "About",
     subHeading: "Learn More about Serah",
-    imgSrc: "",
+    imgSrc: "/public/serah-bg-1.png",
     to: "/about",
   },
   {
