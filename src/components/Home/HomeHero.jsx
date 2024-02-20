@@ -11,8 +11,8 @@ const HomeHero = () => {
     return () => clearInterval(intervalId);
   }, []);
   return (
-    <section className="min-h-full mt-20 md:mt-5 w-full">
-      <div className=" w-full flex justify-between items-center  max-lg:flex-col items-center max-lg:mt-20">
+    <section className="min-h-screen mt-20 md:mt-5 w-full">
+      <div className=" w-full flex justify-between  max-lg:flex-col items-center max-lg:mt-20">
         <div className="text-center flex flex-col gap-2 items-center justify-center">
           <h1 className="text-3xl text-black">This is Serah Ke </h1>
           <p className="text-[#14142b] text-6xl">Harmonizing Passions</p>

@@ -1,10 +1,11 @@
-import { HomeHeader, HomeHero } from "./";
+import { HomeHeader, HomeHero, HomeAbout } from "./";
 
 const Home = () => {
   return (
-    <main className="min-h-screen font-home text-bodyColor max-w-6xl mx-auto">
+    <main className="min-h-screen font-home text-bodyColor max-w-[1675px] mx-auto">
       <HomeHeader />
       <HomeHero />
+      <HomeAbout/>
     </main>
   );
 };
