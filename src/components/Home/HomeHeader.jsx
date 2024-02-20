@@ -13,7 +13,7 @@ const HomeHeader = () => {
   return (
     <nav className="w-full">
       {/* small nav */}
-      <div className="flex justify-between p-3 z-[99] md:hidden">
+      <div className="justify-between p-3 z-[99]  max-md:flex lg:hidden max-lg:flex">
         <motion.div
           whileHover={{ y: -1, scale: 1.023 }}
           transition={{ type: "spring", duration: 0.5 }}
@@ -54,7 +54,7 @@ const HomeHeader = () => {
           animate={{ y: isNavOpen ? 100 : -300, opacity: isNavOpen ? 1 : 0 }}
           transition={{ duration: 0.3, type: "spring" }}
         >
-          <div className="z-[999]">
+          <div className="bg-white">
             <ul className="flex flex-col p-3 gap-4">
               <li>
                 <Link to="/" className="text-4xl text-gray-600">
@@ -113,7 +113,7 @@ const HomeHeader = () => {
               </motion.div>
             )}
           </div>
-          <div className="flex items-center gap-3 ">
+          <div className="flex items-center gap-3 bg-white">
             <div>
               <CiMail className="text-5xl text-black " />
             </div>
@@ -125,7 +125,7 @@ const HomeHeader = () => {
       </div>
       {/* big nav */}
 
-      <div className="hidden md:flex p-2 items-center justify-between">
+      <div className="max-lg:hidden flex justify-between items-center p-3">
         <div className="flex items-center gap-2">
           <img
             src="/musiclogo.svg"
@@ -140,22 +140,22 @@ const HomeHeader = () => {
         <div>
           <ul className="flex gap-12">
             <li>
-              <Link to="/" className="text-lg text-black">
+              <Link to="/" className="text-2xl text-black ">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/albums" className="text-lg text-black">
+              <Link to="/albums" className="text-2xl text-black">
                 Albums
               </Link>
             </li>
             <li>
-              <Link to="/About" className="text-lg text-black">
+              <Link to="/About" className="text-2xl text-black">
                 About
               </Link>
             </li>
             <li>
-              <a href="#" className="text-lg text-black flex items-center ">
+              <a href="#" className="text-2xl text-black flex items-center ">
                 <p>Pages</p>
                 <motion.button
                   className="flex items-center"
