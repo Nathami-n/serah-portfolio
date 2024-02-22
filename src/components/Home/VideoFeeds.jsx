@@ -19,7 +19,7 @@ const VideoFeeds = ({ videoUrl }) => {
 
   return (
     videoUrl ? (
-    <div className=" md:gap-4 md:p-5 max-md:flex  max-lg:mt-10 max-md:flex-wrap max-md:justify-center max-md:mx-20  md:grid md:grid-cols-4 lg:grid-cols-4  xl:grid-cols-5 shadow-lg shadow-slate-600 rounded-lg border border-[#5f1803] bg-[#0e0401]  max-sm:p-2 max-sm:gap-5 max-sm:overflow-x-hidden ">
+    <div className=" md:gap-4 md:p-5 max-md:flex  max-lg:mt-10 max-md:flex-wrap max-md:justify-center md:grid md:grid-cols-4 lg:grid-cols-4  xl:grid-cols-5 shadow-lg shadow-slate-600 rounded-lg border border-[#5f1803] bg-[#0e0401]  max-sm:p-2 max-sm:gap-5 max-sm:overflow-x-hiddwen max-md:w-[80%] max-md:mx-auto ">
       <div className=" col-span-3 row-span-2 xl:col-span-4 ">
         <div className="w-full h-full max-sm:rounded-full">
           <ReactPlayer url={videoUrl} width="100%" height="100%" />

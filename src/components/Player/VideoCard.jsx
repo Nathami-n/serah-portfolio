@@ -5,7 +5,7 @@ import VideoModal from "./VideoModal";
 const VideoCard = ({ video: { imgUrl, videoUrl, title, id }, yes }) => {
   const [openModal, setOpenModal] = useState(false);
   return (
-    <div className="w-[100%] rounded-lg shadow-lg">
+    <div className="w-[100%] rounded-lg shadow-lg ">
       <div className="w-full">
         <motion.img
           layoutId={id}
