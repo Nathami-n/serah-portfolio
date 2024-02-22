@@ -20,9 +20,9 @@ const VideoFeeds = ({ videoUrl }) => {
   }, []);
   console.log(showdraggable);
   return videoUrl ? (
-    <div className=" md:gap-4 md:p-5 max-md:grid  max-lg:mt-10 md:grid md:grid-cols-4 lg:grid-cols-4  xl:grid-cols-5 shadow-lg shadow-slate-600 rounded-lg border border-[#5f1803] bg-[#0e0401]  max-sm:p-2 max-sm:gap-5 max-sm:overflow-x-hidden max-md:w-[80%] max-md:mx-auto max-md:mt-[20%] ">
+    <div className=" md:gap-4 md:p-5 max-md:grid max-md:grid-cols-3 max-sm:flex max-sm:flex-wrap max-lg:mt-10 md:grid md:grid-cols-4 lg:grid-cols-4  xl:grid-cols-5 shadow-lg shadow-slate-600 rounded-lg border border-[#5f1803] bg-[#0e0401]  max-sm:p-2 max-sm:gap-5 max-sm:overflow-x-hidden max-md:w-[80%] max-md:mx-auto max-md:mt-[20%] ">
       {showdraggable ? (
-        <div className=" md:col-span-3 max-md:col-span-2 md:row-span-2 xl:col-span-4  xl:row-span-3 ">
+        <div className=" md:col-span-3  max-md:col-span-2 max-md:row-span-2 md:row-span-2 xl:col-span-4  xl:row-span-3 ">
           <div className="w-full h-full max-sm:rounded-full">
             <ReactPlayer
               url={videoUrl}
