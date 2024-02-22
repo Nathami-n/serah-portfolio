@@ -19,7 +19,7 @@
     @apply text-2xl text-gray-900
   }
   .explore-link {
-    @apply relative z-10 mt-2 block text-neutral-500 duration-500 group-hover:text-neutral-50
+    @apply relative z-10 mt-2 block text-neutral-600 duration-500 group-hover:text-neutral-50
   }
   @layer utilities {
     .bg-player {

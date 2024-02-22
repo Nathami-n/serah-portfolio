@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const HomeHeader = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [miniNav, setMiniNav] = useState(false);
-  const [largeNav, setLargeNav] = useState(true);
+  const [largeNav, setLargeNav] = useState(false);
   const handleOpen = () => {
     setIsNavOpen(!isNavOpen);
   };
@@ -68,7 +68,7 @@ const HomeHeader = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/About" className="text-4xl text-gray-600">
+                <Link to="/about" className="text-4xl text-gray-600">
                   About
                 </Link>
               </li>
@@ -101,9 +101,9 @@ const HomeHeader = () => {
               >
                 <div className="grid grid-cols-2 gap-9 p-4">
                   <ul className=" flex flex-col gap-9">
-                    <Link className="mininav">Home</Link>
-                    <Link className="mininav">About</Link>
-                    <Link className="mininav">Albums</Link>
+                    <Link to='/' className="mininav">Home</Link>
+                    <Link to='/about' className="mininav">About</Link>
+                    <Link to='/albums' className="mininav">Albums</Link>
                   </ul>
                   <ul className="flex flex-col gap-9">
                     <Link className="mininav">Events</Link>
@@ -127,16 +127,22 @@ const HomeHeader = () => {
       {/* big nav */}
 
       <div className="max-lg:hidden flex justify-between items-center p-3">
-        <div className="flex items-center gap-2">
-          <img
-            src="/musiclogo.svg"
-            className="w-12 object-contain"
-            alt="SerahKe Logo"
-          />
-          <h1 className="text-3xl font-semibold text-black">
-            SerahKe<span className="font-extrabold text-2xl">.</span>
-          </h1>
-        </div>
+      <motion.div
+          whileHover={{ y: -1, scale: 1.023 }}
+          transition={{ type: "spring", duration: 0.5 }}
+          className="cursor-pointer"
+        >
+          <div className="flex items-center gap-2">
+            <img
+              src="/musiclogo.svg"
+              className="w-12 object-contain"
+              alt="SerahKe Logo"
+            />
+            <h1 className="text-3xl font-semibold">
+              SerahKe<span className="font-extrabold text-2xl ">.</span>
+            </h1>
+          </div>
+        </motion.div>
 
         <div>
           <ul className="flex gap-12">
@@ -151,7 +157,7 @@ const HomeHeader = () => {
               </Link>
             </li>
             <li>
-              <Link to="/About" className="text-2xl text-black">
+              <Link to="/about" className="text-2xl text-black">
                 About
               </Link>
             </li>
@@ -162,7 +168,7 @@ const HomeHeader = () => {
                   className="flex items-center"
                   onClick={() => {
                     setLargeNav(!largeNav);
-                    setMiniNav(!setMiniNav)
+                    setMiniNav(!setMiniNav);
                   }}
                   whileHover={{ scale: 1.25 }}
                   whileTap={{ scale: 0.9 }}
@@ -194,9 +200,9 @@ const HomeHeader = () => {
           >
             <div className="grid grid-cols-2 gap-9 p-4">
               <ul className=" flex flex-col gap-9">
-                <Link className="mininav">Home</Link>
-                <Link className="mininav">About</Link>
-                <Link className="mininav">Albums</Link>
+                <Link to='/'className="mininav">Home</Link>
+                <Link to='/about' className="mininav">About</Link>
+                <Link to='/albums'className="mininav">Albums</Link>
               </ul>
               <ul className="flex flex-col gap-9">
                 <Link className="mininav">Events</Link>

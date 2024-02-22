@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Header, Albums } from "./components";
+import { Home, Header, Albums, About } from "./components";
 import ReactPlay from "./components/ReactPlayer";
 const App = () => {
   return (
@@ -14,7 +14,16 @@ const App = () => {
           </Albums>
         }
       />
-      <Route exact path='/video/:videoUrl' element={<ReactPlay><Header/></ReactPlay>}/>
+      <Route
+        exact
+        path="/video/:videoUrl"
+        element={
+          <ReactPlay>
+            <Header />
+          </ReactPlay>
+        }
+      />
+      <Route exact path="/about" element={<About />} />
     </Routes>
   );
 };
