@@ -21,6 +21,10 @@
   .explore-link {
     @apply relative z-10 mt-2 block text-neutral-600 duration-500 group-hover:text-neutral-50
   }
+  .footer-link {
+    @apply text-3xl font-home
+  }
+
   @layer utilities {
     .bg-player {
       background: radial-gradient(circle, #4ac29a, #bdfff3);

@@ -1,9 +1,9 @@
-import VideoFeeds from "./VideoFeeds";
+import VideoFeeds from "./Home/VideoFeeds";
 
-const Hero = ({videoUrl}) => {
+const Hero = ({ videoUrl }) => {
   return (
     <div className="bg-primary">
-      <VideoFeeds videoUrl={videoUrl}/>
+      <VideoFeeds videoUrl={videoUrl} />
     </div>
   );
 };

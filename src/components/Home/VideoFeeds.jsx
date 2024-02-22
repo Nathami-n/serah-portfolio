@@ -1,6 +1,6 @@
-import VideoCard from "./VideoCard";
+import VideoCard from "../Player/VideoCard";
 import { useState } from "react";
-import { data } from "../utils/data";
+import { data } from "../../utils/data";
 import ReactPlayer from "react-player";
 
 const VideoFeeds = ({ videoUrl }) => {

@@ -38,7 +38,7 @@ const HomeLink = ({ item: { heading, subHeading, imgSrc } }) => {
         onMouseMove={handleMouseMove}
         initial="initial"
         whileHover="whileHover"
-        className=" w-full p-3 rounded-md group relative flex items-center justify-between border-b-2 border-neutral-400 py-4 transition-colors duration-500 md:py-8 hover:border-neutral-50"
+        className=" w-full p-3 group relative flex items-center justify-between border-b-2 border-neutral-400 py-4 transition-colors duration-500 md:py-8 hover:border-neutral-50"
       >
         <div>
           <motion.span

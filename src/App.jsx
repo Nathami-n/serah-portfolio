@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, Header, Albums, About } from "./components";
-import ReactPlay from "./components/ReactPlayer";
+import ReactPlay from "./components/Player/ReactPlayer";
 const App = () => {
   return (
     <Routes>
