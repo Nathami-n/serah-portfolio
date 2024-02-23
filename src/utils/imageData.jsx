@@ -24,12 +24,6 @@ export const imgData = [
     imgSrc: "/awards/serahDancing.jpg",
     description: "Carnival",
   },
-
-  {
-    id: 7,
-    imgSrc: "/awards/carnival2.jpg",
-    description: "Carnival",
-  },
   {
     id: 8,
     imgSrc: "/awards/carnival3.jpg",
