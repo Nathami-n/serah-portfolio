@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import {Awards} from "./"
+import {motion} from 'framer-motion'
 
 
 const HomeInterlude = () => {
+  const [isAnimating, setIsAnimating] = useState(true);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIsAnimating((prevState) => !prevState);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
   return (
    <div className="bg-neutral-950 ">
     <div className="flex h-48 items-center justify-center">
@@ -11,7 +21,13 @@ const HomeInterlude = () => {
     <Awards/>
     <div className="flex h-48 items-center justify-center">
         <span className="font-semibold uppercase text-neutral-500">
-          Scroll up
+        <motion.button
+              animate={{ y: isAnimating ? [0, 10] : 0 }}
+              className="p-5 bg-[#14142b] text-white rounded-full w-[250px] hover:bg-gray-100 transition-all hover:shadow-lg hover:text-black hover:duration-300 hover:delay-1 md:mt-4"
+              transition={{ duration: 1, yoyo: Infinity }}
+            >
+              More About me
+            </motion.button>
         </span>
       </div>
    </div>

@@ -2,17 +2,17 @@ export const imgData = [
   {
     id: 1,
     imgSrc: "/awards/kalonzo.jpg",
-    description: "Awarded by Kalonzo",
+    description: "With Kalonzo",
   },
   {
     id: 2,
     imgSrc: "/awards/kalonzo2.jpg",
-    description: "Awarded by Kalonzo",
+    description: "With Kalonzo",
   },
   {
     id: 3,
     imgSrc: "/awards/trophy.jpg",
-    description: "Awarded by Kalonzo",
+    description: "Trophy",
   },
 ];
 export const normalImageData = [

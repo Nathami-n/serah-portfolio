@@ -4,7 +4,7 @@ import HomeLink from "./HomeLink";
 
 const HomeAbout = () => {
   return (
-    <section className="min-h-screen mt-20 overflow-hidden p-9 bg-neutral-950 ">
+    <section className=" mt-20 overflow-hidden p-9 bg-neutral-950 ">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
