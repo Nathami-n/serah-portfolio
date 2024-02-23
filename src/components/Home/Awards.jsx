@@ -8,29 +8,25 @@ const Awards = () => {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
   });
-  const x = useTransform(scrollYProgress, [0, 1], ["-95%", "1%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
   return (
     <section
       ref={sectionRef}
       style={{
-        position:'relative',
-        minHeight:'300%',
-        overflowX:'hidden'
+        position: "relative",
+        height: "400vh"
       }}
-    //   className="relative h-[600vh] overflow-x-hidden"
     >
       <div
-      style={{
-        position:'sticky',
-        top:0,
-        display:'flex',
-        alignItems:'center',
-        overflow:'hidden',
-        minHeight:'100%'
-      }}
-    //    className=" sticky top-0 flex h-[100vh] items-center overflow-hidden" 
-    >
-        <motion.div style={{x}} className="flex gap-9">
+        style={{
+          position: "sticky",
+          top: 0,
+          display: "flex",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <motion.div style={{ x }} className="flex gap-9">
           {imgData.map((img, i) => {
             return <Card img={img} key={i} />;
           })}
