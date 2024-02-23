@@ -35,14 +35,14 @@ const HomeFooter = () => {
           <p className="text-black font-bold text-3xl underline underline-offset-1">
               Pages
             </p>
-            <Link className="footer-link">Home</Link>
-            <Link className="footer-link">About</Link>
-            <Link className="footer-link">Contacts</Link>
+            <Link to='/' className="footer-link">Home</Link>
+            <Link to='/about' className="footer-link">About</Link>
+            <Link  to='/contacts'className="footer-link">Contacts</Link>
           </div>
            <div className="flex flex-col gap-5 mt-12 max-sm:mt-2">
-           <Link className="footer-link">Albums</Link>
-            <Link className="footer-link">Shop</Link>
-            <Link className="footer-link">Events</Link>
+           <Link to='/albums' className="footer-link">Albums</Link>
+            <Link to='/shop' className="footer-link">Shop</Link>
+            <Link to='/events' className="footer-link">Events</Link>
            </div>
           </ul>
        

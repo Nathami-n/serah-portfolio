@@ -7,7 +7,7 @@ export const linkData = [
     to: "/about",
   },
   {
-    id: 1,
+    id: 2,
     heading: "Albums",
     subHeading: "Listen to Jams by Serah",
     imgSrc: "/albums.jpg",
@@ -18,7 +18,7 @@ export const linkData = [
     heading: "Events",
     subHeading: "Book events",
     imgSrc: "/events.jpg",
-    to: "/albums",
+    to: "/events",
   },
   {
     id: 4,

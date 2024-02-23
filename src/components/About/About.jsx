@@ -3,7 +3,7 @@ import { HomeHeader } from "../Home"
 
 const About = () => {
   return (
-    <section>
+    <section className=" font-home ">
         <HomeHeader/>
     </section>
   )

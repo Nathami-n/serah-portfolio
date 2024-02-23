@@ -3,7 +3,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import { useRef } from "react";
 
-const HomeLink = ({ item: { heading, subHeading, imgSrc } }) => {
+const HomeLink = ({ item: { heading, subHeading, imgSrc, to } }) => {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -31,7 +31,7 @@ const HomeLink = ({ item: { heading, subHeading, imgSrc } }) => {
       delay:0.8
     }}
     className="w-full">
-    <Link>
+    <Link to={to}>
       <motion.div
         ref={ref}
         

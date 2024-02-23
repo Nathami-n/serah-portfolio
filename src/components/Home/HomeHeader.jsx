@@ -106,9 +106,9 @@ const HomeHeader = () => {
                     <Link to='/albums' className="mininav">Albums</Link>
                   </ul>
                   <ul className="flex flex-col gap-9">
-                    <Link className="mininav">Events</Link>
-                    <Link className=" mininav">Shop</Link>
-                    <Link className="mininav">Contacts</Link>
+                    <Link to='/events' className="mininav">Events</Link>
+                    <Link to='/shop' className=" mininav">Shop</Link>
+                    <Link to='/contacts' className="mininav">Contacts</Link>
                   </ul>
                 </div>
               </motion.div>
@@ -205,9 +205,9 @@ const HomeHeader = () => {
                 <Link to='/albums'className="mininav">Albums</Link>
               </ul>
               <ul className="flex flex-col gap-9">
-                <Link className="mininav">Events</Link>
-                <Link className=" mininav">Shop</Link>
-                <Link className="mininav">Contacts</Link>
+                <Link to='/events'className="mininav">Events</Link>
+                <Link to='/shop' className=" mininav">Shop</Link>
+                <Link to='/contacts' className="mininav">Contacts</Link>
               </ul>
             </div>
           </motion.div>

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Header, Albums, About } from "./components";
+import { Home, Header, Albums, About, Contacts, Shop, Events } from "./components";
 import ReactPlay from "./components/Player/ReactPlayer";
 const App = () => {
   return (
@@ -24,6 +24,9 @@ const App = () => {
         }
       />
       <Route exact path="/about" element={<About />} />
+      <Route exact path="/contacts" element={<Contacts />} />
+      <Route exact path="/shop" element={<Shop />} />
+      <Route exact path="/events" element={<Events />} />
     </Routes>
   );
 };
