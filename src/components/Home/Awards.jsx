@@ -14,7 +14,7 @@ const Awards = () => {
       ref={sectionRef}
       style={{
         position: "relative",
-        height: "400vh"
+        height: "400vh",
       }}
     >
       <div
@@ -25,6 +25,7 @@ const Awards = () => {
           alignItems: "center",
           height: "100vh",
         }}
+
       >
         <motion.div style={{ x }} className="flex gap-9">
           {imgData.map((img, i) => {
