@@ -21,10 +21,10 @@ const Awards = () => {
         style={{
           position: "sticky",
           top: 0,
-          display: "flex",
           alignItems: "center",
           height: "100vh",
         }}
+        className="flex"
 
       >
         <motion.div style={{ x }} className="flex gap-9">

@@ -24,11 +24,7 @@ export const imgData = [
     imgSrc: "/awards/serahDancing.jpg",
     description: "Carnival",
   },
-  {
-    id: 6,
-    imgSrc: "/awards/carnival.jpg",
-    description: "Carnival",
-  },
+
   {
     id: 7,
     imgSrc: "/awards/carnival2.jpg",
@@ -38,10 +34,5 @@ export const imgData = [
     id: 8,
     imgSrc: "/awards/carnival3.jpg",
     description: "Perfoming",
-  },
-  {
-    id: 9,
-    imgSrc: "/awards/studio.jpg",
-    description: "Serah Ke",
-  },
+  }
 ];
