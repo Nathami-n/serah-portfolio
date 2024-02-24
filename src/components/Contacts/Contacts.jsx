@@ -24,7 +24,8 @@ const Contacts = () => {
   return (
     <section className=" bg-gray-400/5">
       <HomeHeader />
-      <div className="px-4">
+      <div className="flex flex-col md:grid md:grid-cols-10 gap-5 md:grid-grows-5">
+      <div className="px-4 col-span-2">
         <h1 className="text-4xl text-blue-900 font-bold font-home">
           Get In Touch
         </h1>
@@ -49,14 +50,16 @@ const Contacts = () => {
           </ul>
         </div>
       </div>
-      <form
+      <div className=" col-start-4 col-span-7 row-span-3"> <form
         ref={form}
         onSubmit={sendEmail}
-        className="border p-5 flex flex-col gap-3"
+        className="border p-5 flex flex-col gap-3 md:p-14"
       >
-        <label
+     <div className="md:grid md:grid-cols-4 grid-rows-2 gap-x-3 ">
+    <div className=" flex flex-col col-span-2 ">
+    <label
           htmlFor="user_name"
-          className="uppercase text-gray-500 font-bold "
+          className="uppercase text-gray-500 font-bold block "
         >
           Name:
         </label>
@@ -64,11 +67,13 @@ const Contacts = () => {
           id="user_name"
           type="text"
           name="user_name"
-          className="w-full border-2 outline-none p-3 border-green-200"
+          className="w-full border-2 outline-none p-3 border-green-200 col-span-3"
         />
+    </div>
+        <div className=" flex flex-col col-span-2">
         <label
           htmlFor="user_email"
-          className="uppercase text-gray-500 font-bold"
+          className="uppercase text-gray-500 font-bold block"
         >
           Email:
         </label>
@@ -78,6 +83,8 @@ const Contacts = () => {
           name="user_email"
           className="w-full border-2 outline-none p-3 border-green-200"
         />
+        </div>
+        <div className="flex flex-col col-span-4">
         <label htmlFor="message" className="uppercase text-gray-500 font-bold">
           Message:
         </label>
@@ -86,6 +93,9 @@ const Contacts = () => {
           name="message"
           className="w-full h-[100px] outline-none border-2 border-green-200"
         />
+
+        </div>
+     </div>
         <button
           type="submit"
           className="bg-blue-300 rounded-xl p-4 hover:bg-green-600 transition-colors group"
@@ -94,7 +104,9 @@ const Contacts = () => {
             Send
           </p>
         </button>
-      </form>
+      </form></div>
+      </div>
+    
       <HomeFooter />
     </section>
   );
