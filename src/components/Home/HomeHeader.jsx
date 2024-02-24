@@ -51,7 +51,7 @@ const HomeHeader = () => {
 
         <motion.div
           initial={{ opacity: 0, y: -300 }}
-          className=" absolute  left-0 top-0 w-[100vw] border-b-1 rounded-md shadow-md z-[99]"
+          className=" absolute  left-0 right-0 -top-4 w-[100vw] border-b-1 rounded-md shadow-md z-[99]"
           animate={{ y: isNavOpen ? 100 : -300, opacity: isNavOpen ? 1 : 0 }}
           transition={{ duration: 0.3, type: "spring" }}
         >
