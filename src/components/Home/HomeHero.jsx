@@ -13,9 +13,9 @@ const HomeHero = () => {
   return (
     <section className="min-h-screen mt-20 md:mt-5 w-full">
       <div className=" w-full flex justify-between  max-lg:flex-col items-center max-lg:mt-20">
-        <div className="text-center flex flex-col gap-2 items-center justify-center">
+        <div className="text-center flex flex-col gap-2 items-center justify-center md:w-[600px]">
           <h1 className="text-3xl text-black">This is Serah Ke </h1>
-          <p className="text-[#14142b] text-6xl">Harmonizing Passions</p>
+          <p className="text-[#14142b] text-6xl md:text-wrap">Bringing to life African <span className="inline-block mt-4">Classical Music</span></p>
           <Link to="/contanct" className="text-4xl my-8">
             <motion.button
               animate={{ y: isAnimating ? [0, 10] : 0 }}
