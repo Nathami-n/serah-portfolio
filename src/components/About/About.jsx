@@ -3,15 +3,15 @@ import AboutAddition from "./AboutAddition";
 
 const About = () => {
   return (
-    <section className=" font-home bg-gray-400/10  p-[20px]">
+    <section className=" font-home bg-gray-400/10 ">
       <HomeHeader />
-      <div className="h-full border-gray-400 border shadow-md shadow-slate-300 rounded-sm">
+      <div className="h-full ">
         <div className=" flex max-md:justify-center max-lg:justify-center lg:justify-around">
           <div className="w-[300px] h-[300px] bg-red-300/20">
             <img
-              src="/awards/studio.jpg"
+              src="/awards/sit.JPG"
               alt="SerahKeImage"
-              className="h-full w-full object-fill"
+              className="h-full w-full object-cover"
             />
           </div>
           <div className="flex flex-col justify-center items-center">
