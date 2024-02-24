@@ -16,7 +16,7 @@ const HomeHero = () => {
         <div className="text-center flex flex-col gap-2 items-center justify-center md:w-[600px]">
           <h1 className="text-3xl text-black">This is Serah Ke </h1>
           <p className="text-[#14142b] text-6xl md:text-wrap">Bringing to life African <span className="inline-block mt-4">Classical Music</span></p>
-          <Link to="/contanct" className="text-4xl my-8">
+          <Link to="/contacts" className="text-4xl my-8">
             <motion.button
               animate={{ y: isAnimating ? [0, 10] : 0 }}
               className="p-5 bg-[#14142b] text-white rounded-full w-[250px] hover:bg-gray-100 transition-all hover:shadow-lg hover:text-black hover:duration-300 hover:delay-1 md:mt-4"

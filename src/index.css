@@ -1,32 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Protest+Revolution&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.navlinks {
+  @apply flex items-center gap-1 justify-center;
+}
 
-  .navlinks {
-    @apply flex items-center gap-1 justify-center
-  }
+.navicon {
+  @apply text-4xl inline bg-yellow-700 rounded-full text-white px-1;
+}
 
-  .navicon {
-    @apply text-4xl inline bg-yellow-700 rounded-full text-white px-1
-  }
+.navspan {
+  @apply text-pink-200 ml-3 text-sm  font-serif  md:inline hidden font-extrabold text-nowrap;
+}
+.mininav {
+  @apply text-2xl text-gray-900;
+}
+.explore-link {
+  @apply relative z-10 mt-2 block text-neutral-600 duration-500 group-hover:text-neutral-50;
+}
+.footer-link {
+  @apply text-3xl font-home;
+}
 
-  .navspan {
-    @apply text-pink-200 ml-3 text-sm  font-serif  md:inline hidden font-extrabold text-nowrap
+@layer utilities {
+  .bg-player {
+    background: radial-gradient(circle, #4ac29a, #bdfff3);
   }
-  .mininav {
-    @apply text-2xl text-gray-900
-  }
-  .explore-link {
-    @apply relative z-10 mt-2 block text-neutral-600 duration-500 group-hover:text-neutral-50
-  }
-  .footer-link {
-    @apply text-3xl font-home
-  }
-
-  @layer utilities {
-    .bg-player {
-      background: radial-gradient(circle, #4ac29a, #bdfff3);
-    }
-  }
+}

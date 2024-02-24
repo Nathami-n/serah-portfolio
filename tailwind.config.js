@@ -11,7 +11,8 @@ export default {
         bodyColor:'#777990'
       },
       fontFamily:{
-        home:['Oswald', 'Serif']
+        home:['Oswald', 'Serif'],
+        about:['Aladin,', 'Serif']
       }
     },
   },
