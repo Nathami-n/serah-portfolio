@@ -3,15 +3,15 @@ import AboutAddition from "./AboutAddition";
 
 const About = () => {
   return (
-    <section className=" font-home bg-gray-400/10">
+    <section className=" font-home bg-gray-400/10  p-[20px]">
       <HomeHeader />
-      <div className="h-full">
+      <div className="h-full border-gray-400 border shadow-md shadow-slate-300 rounded-sm">
         <div className=" flex max-md:justify-center max-lg:justify-center lg:justify-around">
-          <div className="w-[300px] h-[300px] bg-red-300">
+          <div className="w-[300px] h-[300px] bg-red-300/20">
             <img
               src="/awards/studio.jpg"
               alt="SerahKeImage"
-              className="h-full w-full object-contain"
+              className="h-full w-full object-fill"
             />
           </div>
           <div className="flex flex-col justify-center items-center">
@@ -26,7 +26,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="p-5">
+        <div className="p-5 mb-[200px]">
           <p className="text-2xl break-words">
             With a passion for preserving the rich heritage of African music,
             Serah, under Serah KE Music, specializes in covering timeless
