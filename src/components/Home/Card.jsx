@@ -26,8 +26,8 @@ const Card = ({ img: { imgSrc, description,hash } }) => {
           )
         }
       </div>
-      <div className="absolute inset-0 z-10 grid place-content-center">
-        <p className="bg-gradient-to-br from-white/20 to-white/0 p-8  max-md:text-2xl md:text-4xl font-black uppercase text-white backdrop-blur-lg">
+      <div className="absolute inset-0 z-10 grid place-content-center ">
+        <p className="bg-gradient-to-br from-white/20 to-white/0 p-8  max-md:text-2xl md:text-4xl font-black uppercase text-white">
           {description}
         </p>
       </div>
