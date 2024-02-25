@@ -49,6 +49,24 @@ const About = () => {
                   Ntv Feature
                 </a>
               </li>
+              <li>
+                <a
+                  className="text-xl hover:border-b-2 border-blue-800 transition-all"
+                  target="_blank"
+                  href="https://whownskenya.com/recognising-serah-nyaboke-nyamira-based-songbird-delivering-masterpieces-in-rhumba-music-covers/  "
+                >
+                  Who Owns Kenya
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-xl hover:border-b-2 border-blue-800 transition-all"
+                  target="_blank"
+                  href="https://www.ghafla.com/ke/talented-queen-of-zilizopendwa-serah-george-honored-by-fred-obachi-machokaavideo/ "
+                >
+                  Fred Machoka Honor
+                </a>
+              </li>
             </ul>
           </div>
         </motion.div>
