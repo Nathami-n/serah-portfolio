@@ -20,16 +20,18 @@ const HomeHeader = () => {
           transition={{ type: "spring", duration: 0.5 }}
           className="cursor-pointer"
         >
-          <div className="flex items-center gap-2">
-            <img
-              src="/musiclogo.svg"
-              className="w-12 object-contain"
-              alt="SerahKe Logo"
-            />
-            <h1 className="text-3xl font-semibold">
-              SerahKe<span className="font-extrabold text-2xl ">.</span>
-            </h1>
-          </div>
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <img
+                src="/musiclogo.svg"
+                className="w-12 object-contain"
+                alt="SerahKe Logo"
+              />
+              <h1 className="text-3xl font-semibold">
+                SerahKe<span className="font-extrabold text-2xl ">.</span>
+              </h1>
+            </div>
+          </Link>
         </motion.div>
         <div>
           <motion.button
@@ -101,14 +103,26 @@ const HomeHeader = () => {
               >
                 <div className="grid grid-cols-2 gap-9 p-4">
                   <ul className=" flex flex-col gap-9">
-                    <Link to='/' className="mininav">Home</Link>
-                    <Link to='/about' className="mininav">About</Link>
-                    <Link to='/albums' className="mininav">Albums</Link>
+                    <Link to="/" className="mininav">
+                      Home
+                    </Link>
+                    <Link to="/about" className="mininav">
+                      About
+                    </Link>
+                    <Link to="/albums" className="mininav">
+                      Albums
+                    </Link>
                   </ul>
                   <ul className="flex flex-col gap-9">
-                    <Link to='/events' className="mininav">Events</Link>
-                    <Link to='/shop' className=" mininav">Shop</Link>
-                    <Link to='/contacts' className="mininav">Contacts</Link>
+                    <Link to="/events" className="mininav">
+                      Events
+                    </Link>
+                    <Link to="/shop" className=" mininav">
+                      Shop
+                    </Link>
+                    <Link to="/contacts" className="mininav">
+                      Contacts
+                    </Link>
                   </ul>
                 </div>
               </motion.div>
@@ -127,21 +141,23 @@ const HomeHeader = () => {
       {/* big nav */}
 
       <div className="max-lg:hidden flex justify-between items-center p-3">
-      <motion.div
+        <motion.div
           whileHover={{ y: -1, scale: 1.023 }}
           transition={{ type: "spring", duration: 0.5 }}
           className="cursor-pointer"
         >
-          <div className="flex items-center gap-2">
-            <img
-              src="/musiclogo.svg"
-              className="w-12 object-contain"
-              alt="SerahKe Logo"
-            />
-            <h1 className="text-3xl font-semibold">
-              SerahKe<span className="font-extrabold text-2xl ">.</span>
-            </h1>
-          </div>
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <img
+                src="/musiclogo.svg"
+                className="w-12 object-contain"
+                alt="SerahKe Logo"
+              />
+              <h1 className="text-3xl font-semibold">
+                SerahKe<span className="font-extrabold text-2xl ">.</span>
+              </h1>
+            </div>
+          </Link>
         </motion.div>
 
         <div>
@@ -200,14 +216,26 @@ const HomeHeader = () => {
           >
             <div className="grid grid-cols-2 gap-9 p-4">
               <ul className=" flex flex-col gap-9">
-                <Link to='/'className="mininav">Home</Link>
-                <Link to='/about' className="mininav">About</Link>
-                <Link to='/albums'className="mininav">Albums</Link>
+                <Link to="/" className="mininav">
+                  Home
+                </Link>
+                <Link to="/about" className="mininav">
+                  About
+                </Link>
+                <Link to="/albums" className="mininav">
+                  Albums
+                </Link>
               </ul>
               <ul className="flex flex-col gap-9">
-                <Link to='/events'className="mininav">Events</Link>
-                <Link to='/shop' className=" mininav">Shop</Link>
-                <Link to='/contacts' className="mininav">Contacts</Link>
+                <Link to="/events" className="mininav">
+                  Events
+                </Link>
+                <Link to="/shop" className=" mininav">
+                  Shop
+                </Link>
+                <Link to="/contacts" className="mininav">
+                  Contacts
+                </Link>
               </ul>
             </div>
           </motion.div>

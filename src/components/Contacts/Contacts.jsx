@@ -59,17 +59,29 @@ const Contacts = () => {
                 <h1 className="uppercase text-blue-500 mb-1 mt-5">Social</h1>
               </li>
               <li>
-                <a href="" className="text-gray-400 text-xl font-semibold">
+                <a
+                  href="https://www.facebook.com/harez.tanya.50?mibextid=ZbWKwL"
+                  target="_blank"
+                  className="text-gray-400 text-xl font-semibold"
+                >
                   Facebook
                 </a>
               </li>
               <li>
-                <a href="" className="text-gray-400 text-xl font-semibold">
+                <a
+                  href="https://x.com/NyabokeSerah?t=F2Po3SMW8yuNcsHd4vLDSA&s=09"
+                  target="_blank"
+                  className="text-gray-400 text-xl font-semibold"
+                >
                   Twitter
                 </a>
               </li>
               <li>
-                <a href="" className="text-gray-400 text-xl font-semibold">
+                <a
+                  href="https://www.instagram.com/serah__ke?igsh=NXZzdmY3OHh4cDF6"
+                  target="_blank"
+                  className="text-gray-400 text-xl font-semibold"
+                >
                   Instagram
                 </a>
               </li>
