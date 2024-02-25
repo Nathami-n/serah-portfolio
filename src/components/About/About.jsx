@@ -1,22 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HomeHeader } from "../Home";
 import AboutAddition from "./AboutAddition";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 import { HiOutlineBookOpen } from "react-icons/hi";
+import { Blurhash } from "react-blurhash";
 const About = () => {
   const [openBlog, setOpenBlog] = useState(false);
-  const handleClick =() => {
+  const [loaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setIsLoaded(true);
+    };
+    img.src = "/awards/sit.JPG";
+  }, []);
+  const handleClick = () => {
     setOpenBlog(!openBlog);
-  }
+  };
   return (
     <section className=" font-home bg-gray-400/10 relative ">
       <HomeHeader />
       {openBlog && (
         <motion.div
-        animate={{
-          x: openBlog? 1000: -1000
-        }}
-         className="fixed top-[60%] h-[200px]  p-4 -left-[1000px] z-[999] bg-white  rounded-lg ">
+          animate={{
+            x: openBlog ? 1000 : -1000,
+          }}
+          className="fixed top-[60%] h-[200px]  p-4 -left-[1000px] z-[999] bg-white  rounded-lg "
+        >
           <div className="p-6 flex flex-col items-center">
             <h1 className="text-2xl text-blue-400 mb-5">Blogs</h1>
             <ul className="flex flex-col gap-3 items-center">
@@ -43,21 +53,28 @@ const About = () => {
           </div>
         </motion.div>
       )}
-      <div 
-      onClick={handleClick}
-      className="fixed top-[70%] right-0">
+      <div onClick={handleClick} className="fixed top-[70%] right-0">
         <button>
-        <HiOutlineBookOpen className="text-5xl text-white rounded-full p-1 bg-green-300 transition-all hover:bg-red-300 hover:scale-105"/>
+          <HiOutlineBookOpen className="text-5xl text-white rounded-full p-1 bg-green-300 transition-all hover:bg-red-300 hover:scale-105" />
         </button>
       </div>
       <div className="h-full ">
         <div className=" flex max-md:justify-center max-lg:justify-center lg:justify-around">
           <div className="w-[300px] h-[300px] bg-red-300/20">
-            <img
-              src="/awards/sit.JPG"
-              alt="SerahKeImage"
-              className="h-full w-full object-cover"
-            />
+            {!loaded ? (
+              <Blurhash
+                width={300}
+                height={300}
+                hash="LSK0y+xX};x^_MofwuX8x[kDVsad"
+                punch={1}
+              />
+            ) : (
+              <img
+                src="/awards/sit.JPG"
+                alt="SerahKeImage"
+                className="h-full w-full object-cover"
+              />
+            )}
           </div>
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-5xl md:text-7xl font-extrabold font-about text-gray-400">

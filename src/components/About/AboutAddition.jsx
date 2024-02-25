@@ -1,16 +1,30 @@
+import { useEffect, useState } from "react";
 import { HomeFooter } from "../Home";
+import { Blurhash } from "react-blurhash";
 
 const AboutAddition = () => {
+  const [loaded, setIsLoaded] = useState(false);
+  useEffect(()=>{
+    const img = new Image();
+    img.onload = () => {setIsLoaded(true)};
+    img.src='/serahAbout.jpg'
+
+  },[])
   return (
     <section className=" font-home bg-gray-400/10 mt-[200px] min-h-screen max-w-[1800px]">
       <div className="h-full border-gray-400 border-t shadow-md shadow-slate-300 rounded-sm">
         <div className="flex max-md:justify-center max-lg:justify-center lg:justify-around p-[20px]">
           <div className="w-[300px] h-[400px] bg-red-300/20">
-            <img
-              src="/serahAbout.jpg"
-              alt="SerahKeImage"
-              className="h-full w-full object-cover"
-            />
+            {!loaded ? <Blurhash
+             width={300}
+             height={400}
+             hash='LOIOOu~q004n00M{afR*McIU?vxu'
+             punch={1}
+            />: <img
+            src="/serahAbout.jpg"
+            alt="SerahKeImage"
+            className="h-full w-full object-cover"
+          />}
           </div>
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-5xl md:text-7xl font-extrabold font-about text-gray-400">

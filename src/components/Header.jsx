@@ -37,12 +37,12 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link path="/contact" className="navlink">
+              <Link to="/contact" className="navlink">
                 <CiMail className="navicon" />
               </Link>
             </li>
             <li>
-              <Link path="/about" className="navlink">
+              <Link to="/about" className="navlink">
                 <CiUser className="navicon" />
               </Link>
             </li>

@@ -35,4 +35,22 @@ export const imgData = [
     description: "Perfoming",
     hash: "L9Aa=3xNEIRq2OWa$mWlIjEtt2X3",
   },
+  {
+    id: 9,
+    imgSrc: "/vulindela1.jpg",
+    description: "Vulindela",
+    hash: "LSM6SAE1kWozUHWAxukC-p%1tRad",
+  },
+  {
+    id: 10,
+    imgSrc: "/vulindela3.jpg",
+    description: "Vulindela",
+    hash: "LQLyv4IokWxaP;oJxtoe-p%MX9WB",
+  },
+  {
+    id: 11,
+    imgSrc: "/vulindela2.jpg",
+    description: "Vulindela",
+    hash: "LQL:GuIqogbvLNNGs;W;?F%0kDRi",
+  },
 ];
