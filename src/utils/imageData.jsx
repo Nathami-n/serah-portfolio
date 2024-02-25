@@ -26,7 +26,7 @@ export const imgData = [
   {
     id: 5,
     imgSrc: "/awards/serahDancing.jpg",
-    description: "Carnival",
+    description: "Carnivore",
     hash: "LGCOUm+|M|}[IT%M-WMxF2RiNZOZ",
   },
   {
