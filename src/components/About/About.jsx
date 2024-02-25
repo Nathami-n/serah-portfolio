@@ -1,18 +1,54 @@
+import { useState } from "react";
 import { HomeHeader } from "../Home";
 import AboutAddition from "./AboutAddition";
-
+import {motion} from 'framer-motion'
+import { HiOutlineBookOpen } from "react-icons/hi";
 const About = () => {
+  const [openBlog, setOpenBlog] = useState(false);
+  const handleClick =() => {
+    setOpenBlog(!openBlog);
+  }
   return (
     <section className=" font-home bg-gray-400/10 relative ">
       <HomeHeader />
-      <div className="fixed top-[70%] left-[10px] z-[999] bg-white">
-        <div>
-          <h1>Blogs</h1>
-          <ul>
-            <li><a  target='_blank' href="https://www.tuko.co.ke/people/527742-fast-rising-zilizopendwa-cover-artiste-receives-prestigious-honorary-award/ ">Honorary Award</a></li>
-            <li><a  target='_blank' href="https://nation.africa/kenya/life-and-style/dn2/-meet-the-medical-student-who-has-found-fame-as-rhumba-singer--4531190 ">Ntv Feature</a></li>
-          </ul>
-        </div>
+      {openBlog && (
+        <motion.div
+        animate={{
+          x: openBlog? 1000: -1000
+        }}
+         className="fixed top-[70%] h-[200px]  p-4 -left-[1000px] z-[999] bg-white  rounded-lg ">
+          <div className="p-6 flex flex-col items-center">
+            <h1 className="text-2xl text-blue-400 mb-5">Blogs</h1>
+            <ul className="flex flex-col gap-3 items-center">
+              <li>
+                <a
+                  className="text-lg hover:border-b-2 border-blue-800 transition-all"
+                  target="_blank"
+                  href="https://www.tuko.co.ke/people/527742-fast-rising-zilizopendwa-cover-artiste-receives-prestigious-honorary-award/ "
+                >
+                  Honorary Award
+                </a>
+              </li>
+
+              <li>
+                <a
+                  className="text-xl hover:border-b-2 border-blue-800 transition-all"
+                  target="_blank"
+                  href="https://nation.africa/kenya/life-and-style/dn2/-meet-the-medical-student-who-has-found-fame-as-rhumba-singer--4531190 "
+                >
+                  Ntv Feature
+                </a>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+      )}
+      <div 
+      onClick={handleClick}
+      className="fixed top-[70%] right-0">
+        <button>
+        <HiOutlineBookOpen className="text-5xl text-white rounded-full p-1 bg-green-300 transition-all hover:bg-red-300 hover:scale-105"/>
+        </button>
       </div>
       <div className="h-full ">
         <div className=" flex max-md:justify-center max-lg:justify-center lg:justify-around">
@@ -24,8 +60,12 @@ const About = () => {
             />
           </div>
           <div className="flex flex-col justify-center items-center">
-            <h1 className="text-5xl md:text-7xl font-extrabold font-about text-gray-400">SERAH</h1>
-            <h1 className="text-5xl  md:text-7xl font-about font-extrabold text-gray-400 ">KE</h1>
+            <h1 className="text-5xl md:text-7xl font-extrabold font-about text-gray-400">
+              SERAH
+            </h1>
+            <h1 className="text-5xl  md:text-7xl font-about font-extrabold text-gray-400 ">
+              KE
+            </h1>
           </div>
         </div>
         <div className="text-center bg-[#Be5b25]/40 p-4">
@@ -55,7 +95,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <AboutAddition/>
+      <AboutAddition />
     </section>
   );
 };
