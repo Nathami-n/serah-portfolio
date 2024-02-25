@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import VideoModal from "./VideoModal";
 
-const VideoCard = ({ video: { imgUrl, videoUrl, title, id }, yes }) => {
+const VideoCard = ({ video: { imgUrl, videoUrl, title, id }}) => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className="w-[100%] rounded-lg shadow-lg ">
