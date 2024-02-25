@@ -10,10 +10,10 @@ const HomeFooter = () => {
         <div className="flex flex-col gap-3">
           <Link to="/">
             <div className="w-[70px] flex items-center gap-3">
-              <img
-                src="/musiclogo.svg"
-                alt="music logo"
-                className="w-full object-cover cursor-pointer"
+            <img
+                src="/serahLogo.svg"
+                className="object-contain  font-extrabold border rounded-full  h-full w-full bg-orange-400/80 "
+                alt="SerahKe Logo"
               />
               <h1 className="text-black text-3xl font-home font-extrabold">
                 SerahKe.

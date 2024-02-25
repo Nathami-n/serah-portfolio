@@ -23,8 +23,8 @@ const HomeHeader = () => {
           <Link to="/">
             <div className="flex items-center gap-2">
               <img
-                src="/musiclogo.svg"
-                className="w-12 object-contain"
+                src="/serahLogo.svg"
+                className="object-cover w-[75px] h-[75px]  font-extrabold border rounded-full  bg-yellow-200  "
                 alt="SerahKe Logo"
               />
               <h1 className="text-3xl font-semibold">
@@ -148,9 +148,9 @@ const HomeHeader = () => {
         >
           <Link to="/">
             <div className="flex items-center gap-2">
-              <img
-                src="/musiclogo.svg"
-                className="w-12 object-contain"
+            <img
+                src="/serahLogo.svg"
+                className="object-contain  font-extrabold border rounded-full h-[70px] w-[70px] bg-orange-400/80 "
                 alt="SerahKe Logo"
               />
               <h1 className="text-3xl font-semibold">
