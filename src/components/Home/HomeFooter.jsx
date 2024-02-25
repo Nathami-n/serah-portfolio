@@ -12,7 +12,7 @@ const HomeFooter = () => {
             <div className="w-[70px] flex items-center gap-3">
             <img
                 src="/serahLogo.svg"
-                className="object-contain  font-extrabold border rounded-full  h-full w-full bg-orange-400/80 "
+                className="object-contain  font-extrabold border rounded-full  h-full w-full "
                 alt="SerahKe Logo"
               />
               <h1 className="text-black text-3xl font-home font-extrabold">
