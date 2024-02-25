@@ -57,7 +57,7 @@ const VideoFeeds = ({ videoUrl }) => {
       })}
     </div>
   ) : (
-    <div className=" md:gap-4 max-lg:grid max-lg:grid-cols-2 md:pt-12 lg:grid lg:grid-cols-4 max-lg:mt-12 md:p-5 max-md:flex  max-sm:grid max-sm:grid-cols-2 max-sm:mt-16 max-md:flex-wrap max-md:justify-center max-md:m-auto max-sm:w-[80%] shadow-lg shadow-slate-600 rounded-lg border border-[#5f1803] bg-[#0e0401]  max-sm:p-12 max-sm:gap-5 max-sm:overflow-x-hidden max-sm:mx-auto">
+    <div className=" md:gap-4 max-lg:grid max-lg:grid-cols-2 md:pt-12 lg:grid lg:grid-cols-4 max-lg:mt-12 md:p-5 max-md:flex max-sm:mt-16 max-md:flex-wrap max-md:justify-center max-md:m-auto max-sm:w-[80%] shadow-lg shadow-slate-600 rounded-lg border border-[#5f1803] bg-[#0e0401]  max-sm:p-12 max-sm:gap-5 max-sm:overflow-x-hidden max-sm:mx-auto">
       {videoData?.map((video, idx) => {
         return <VideoCard key={idx} video={video} />;
       })}
