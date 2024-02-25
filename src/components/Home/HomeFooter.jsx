@@ -21,8 +21,7 @@ const HomeFooter = () => {
             </div>
           </Link>
           <p className=" text-xl font-semibold max-w-[600px] break-words ">
-            Serah is a Medic in the making who has found Passion and Love in
-            Music. You can find her in the Handles below
+            You can find her in the Handles below
           </p>
         </div>
         <div className="flex gap-6 items-center mt-3">
