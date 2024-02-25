@@ -5,9 +5,9 @@ const AboutAddition = () => {
     <section className=" font-home bg-gray-400/10 mt-[200px] min-h-screen max-w-[1800px]">
       <div className="h-full border-gray-400 border-t shadow-md shadow-slate-300 rounded-sm">
         <div className="flex max-md:justify-center max-lg:justify-center lg:justify-around p-[20px]">
-          <div className="w-[300px] h-[300px] bg-red-300/20">
+          <div className="w-[300px] h-[400px] bg-red-300/20">
             <img
-              src="/awards/studio.jpg"
+              src="/serahAbout.jpg"
               alt="SerahKeImage"
               className="h-full w-full object-cover"
             />

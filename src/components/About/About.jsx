@@ -3,8 +3,17 @@ import AboutAddition from "./AboutAddition";
 
 const About = () => {
   return (
-    <section className=" font-home bg-gray-400/10 ">
+    <section className=" font-home bg-gray-400/10 relative ">
       <HomeHeader />
+      <div className="fixed top-[70%] left-[10px] z-[999] bg-white">
+        <div>
+          <h1>Blogs</h1>
+          <ul>
+            <li><a  target='_blank' href="https://www.tuko.co.ke/people/527742-fast-rising-zilizopendwa-cover-artiste-receives-prestigious-honorary-award/ ">Honorary Award</a></li>
+            <li><a  target='_blank' href="https://nation.africa/kenya/life-and-style/dn2/-meet-the-medical-student-who-has-found-fame-as-rhumba-singer--4531190 ">Ntv Feature</a></li>
+          </ul>
+        </div>
+      </div>
       <div className="h-full ">
         <div className=" flex max-md:justify-center max-lg:justify-center lg:justify-around">
           <div className="w-[300px] h-[300px] bg-red-300/20">
