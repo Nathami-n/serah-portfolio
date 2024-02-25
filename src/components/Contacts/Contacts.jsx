@@ -1,14 +1,23 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { HomeFooter, HomeHeader } from "../Home";
 const Contacts = () => {
+  const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
     message: "",
   });
+
+  useEffect(()=>{
+    if (success){
+      setTimeout(()=>{
+        setSuccess(false);
+      },3000)
+    }
+
+  },[success])
   const handleFormChange = (e) => {
-    console.log(e.target.name);
     setFormData((prevData) => {
       return {
         ...prevData,
@@ -20,14 +29,9 @@ const Contacts = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    setFormData({
-      user_name: "",
-      user_email: "",
-      message: "",
-    });
     emailjs
       .sendForm("service_hzvc20k", "template_ogkyzkd", form.current, {
-        publicKey: "lWekCIcYrwc62gSK9",
+        publicKey: import.meta.env.VITE_API_KEY,
       })
       .then(
         () => {
@@ -37,6 +41,12 @@ const Contacts = () => {
           console.log("FAILED...", error.text);
         }
       );
+      setFormData({
+        user_name: "",
+        user_email: "",
+        message: "",
+      });
+      setSuccess(true);
   };
 
   return (
@@ -95,6 +105,8 @@ const Contacts = () => {
             onSubmit={sendEmail}
             className="border p-5 flex flex-col gap-3 md:p-14"
           >
+            {success && <div className="bg-blue-400 rounded-full"> <h1 className="
+            text-center text-white p-2">email sent successfully</h1></div>}
             <div className="md:grid md:grid-cols-4 grid-rows-2 gap-x-3 ">
               <div className=" flex flex-col col-span-2 ">
                 <label
@@ -105,6 +117,7 @@ const Contacts = () => {
                 </label>
                 <input
                   onChange={handleFormChange}
+                  value={formData.user_name}
                   id="from_name"
                   type="text"
                   name="user_name"
@@ -120,6 +133,7 @@ const Contacts = () => {
                 </label>
                 <input
                   onChange={handleFormChange}
+                  value={formData.user_email}
                   id="user_email"
                   type="email"
                   name="user_email"
@@ -133,7 +147,8 @@ const Contacts = () => {
                 >
                   Message:
                 </label>
-                <textarea
+                <textarea 
+                value={formData.message}
                   onChange={handleFormChange}
                   id="message"
                   name="message"
