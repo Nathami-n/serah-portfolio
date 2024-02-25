@@ -25,7 +25,7 @@ const About = () => {
           animate={{
             x: openBlog ? 1000 : -1000,
           }}
-          className="fixed top-[60%] h-[200px]  p-4 -left-[1000px] z-[999] bg-white  rounded-lg "
+          className="fixed top-[60%]   p-4 -left-[1000px] z-[999] bg-white  rounded-lg "
         >
           <div className="p-6 flex flex-col items-center">
             <h1 className="text-2xl text-blue-400 mb-5">Blogs</h1>
