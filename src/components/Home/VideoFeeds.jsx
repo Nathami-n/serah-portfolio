@@ -29,6 +29,7 @@ const VideoFeeds = ({ videoUrl }) => {
               width="100%"
               height="100%"
               playing={true}
+              controls 
             />
           </div>
         </div>
