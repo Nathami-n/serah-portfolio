@@ -7,6 +7,12 @@ export const data = [
     title: "Angelike",
   },
   {
+    id: 10,
+    imgUrl:"https://i.ytimg.com/vi/2yUiB5J1_p4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApE6Nu7OVYneyJNBc7rlwPuRRAMg",
+    videoUrl: "https://youtu.be/2yUiB5J1_p4?si=d11SKcgvhVO05HJp",
+    title: "Sina Makosa",
+  },
+  {
     id: 1,
     imgUrl:
       "https://i.ytimg.com/vi/Y1qULpT0eWU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDwBNpJlwBEoThWuuL9tNT9wJBMNw",

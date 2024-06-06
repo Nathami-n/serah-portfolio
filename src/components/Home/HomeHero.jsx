@@ -13,7 +13,7 @@ const HomeHero = () => {
   return (
     <section className="min-h-screen mt-20 md:mt-5 w-full">
       <div className=" w-full flex justify-between  max-lg:flex-col items-center max-lg:mt-20">
-        <div className="text-center flex flex-col gap-2 items-center justify-center md:w-[600px]">
+        <div className="text-center flex flex-col gap-2 items-center justify-center md:w-full">
           <h1 className="text-3xl text-black">This is Serah Ke </h1>
           <p className="text-[#14142b] text-6xl md:text-wrap">Bringing to life African <span className="inline-block mt-4">Classical Music</span></p>
           <Link to="/contacts" className="text-4xl my-8">
@@ -26,13 +26,13 @@ const HomeHero = () => {
             </motion.button>
           </Link>
         </div>
-        <div className="p-4 w-[400px] ml-5 relative">
-          <motion.div
+        <div className="p-4 w-full ml-1 h-full relative">
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2 }}
-            className="rounded-full bg-blue-300 border   max-md:left-1 max-md:w-[400px] max-md:h-[400px] max-sm:h-[350px]  max-sm:w-[350px] absolute z-0 top-[160px] right-12 md:w-[350px] md:h-[350px] md:top-[100px]  "
-          />
+            className="rounded-full bg-blue-300 border w-[400px]  h-[400px] absolute top-[96px] right-[70px]"
+          /> */}
           <motion.img
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -40,9 +40,9 @@ const HomeHero = () => {
               delay: 0.6,
               duration: 0.25,
             }}
-            src="/serah-bg-1.png"
+            src="/svg.png"
             alt="serah image"
-            className="w-full object-contain relative"
+            className="w-full object-contain relative h-[400px]"
           />
         </div>
       </div>
