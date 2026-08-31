@@ -6,7 +6,7 @@ import { Reveal } from "~/components/motion/primitives";
 import { Container, Section } from "~/components/section";
 import { AWARD, BIO_PARAGRAPHS, FACTS } from "~/content/bio";
 import { PRESS } from "~/content/music";
-import { pageMeta } from "~/lib/meta";
+import { breadcrumbSchema, pageMeta } from "~/lib/meta";
 
 import type { Route } from "./+types/about";
 
@@ -33,6 +33,12 @@ export const meta: Route.MetaFunction = () =>
 export default function About() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "About", path: "/about" }])),
+        }}
+      />
       <Section className="pb-16 pt-14 sm:pb-20 sm:pt-20">
         <Container>
           {/*

@@ -7,7 +7,7 @@ import { VideoPlayer, VideoThumbnail } from "~/components/video-player";
 import { TRACKS } from "~/content/music";
 import { YOUTUBE_CHANNEL } from "~/content/site";
 import { usePlaylist } from "~/hooks/use-playlist";
-import { pageMeta } from "~/lib/meta";
+import { breadcrumbSchema, pageMeta } from "~/lib/meta";
 
 import type { Route } from "./+types/music";
 
@@ -17,6 +17,7 @@ export const meta: Route.MetaFunction = () =>
     description:
       "Serah Ke's recordings: Rhumba and Zilizopendwa covers of Franco, Mpongo Love, Les Wanyika, Brenda Fassie and the Maroon Commandos.",
     path: "/music",
+    image: "awards-serahdancing",
   });
 
 /**
@@ -40,6 +41,12 @@ export default function Music() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Music", path: "/music" }])),
+        }}
+      />
       <Section className="py-14 sm:py-20">
         <Container>
           <SectionHeading

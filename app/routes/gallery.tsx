@@ -2,7 +2,7 @@ import { ImageViewer, useImageViewer } from "~/components/image-viewer";
 import { Image } from "~/components/image";
 import { Container, Section, SectionHeading } from "~/components/section";
 import { GALLERY } from "~/content/gallery";
-import { pageMeta } from "~/lib/meta";
+import { breadcrumbSchema, pageMeta } from "~/lib/meta";
 
 import type { Route } from "./+types/gallery";
 
@@ -12,6 +12,7 @@ export const meta: Route.MetaFunction = () =>
     description:
       "Photographs of Serah Ke performing, in the studio, and receiving her honorary music industry award.",
     path: "/gallery",
+    image: "awards-carnival",
   });
 
 /**
@@ -43,6 +44,12 @@ export default function Gallery() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Gallery", path: "/gallery" }])),
+        }}
+      />
       <Section className="py-14 sm:py-20">
         <Container>
           <SectionHeading

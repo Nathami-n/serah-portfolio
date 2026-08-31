@@ -1,18 +1,14 @@
 /**
  * Biography and career facts.
  *
- * ---------------------------------------------------------------------------
- * VERIFY BEFORE LAUNCH — this section describes a real person
- * ---------------------------------------------------------------------------
- * The prose below is adapted from the previous site, which was last
- * meaningfully updated years ago. Two claims are time-sensitive and are very
- * likely stale now:
+ * This describes a real person, so nothing here is inferred. The previous site
+ * said "medical student", which was true when it was written years ago and is
+ * not now: she has since qualified, confirmed 2026-08-31. That correction
+ * matters beyond accuracy, because "student" undersells a working doctor.
  *
- *   1. "medical student" — she may well have qualified since. Publishing
- *      "student" about a working doctor would be wrong and would undersell her.
- *   2. The award year and any career milestones since.
- *
- * Confirm both with Serah, update, then delete this block. Do not guess.
+ * One item is still open: the YEAR of the honorary award. The old site never
+ * recorded it, so AWARD below states the award without dating it rather than
+ * guessing. Add the year when known.
  */
 
 /** The one-line version, used in the hero and as the meta description base. */
@@ -29,8 +25,7 @@ export const SHORT_BIO =
 export const BIO_PARAGRAPHS: readonly string[] = [
   "Serah works in a repertoire most singers her age have only heard sampled: Zilizopendwa and Rhumba, the music of Franco, Mpongo Love, Les Wanyika and the Maroon Commandos. She sings it straight, at full length, with the arrangements intact.",
   "Her covers are not nostalgia pieces, and they are not novelty either. The songs are treated as the standards they are, given a contemporary recording and a voice with enough range to hold them. Anyone can put a Rhumba track through a modern mix; carrying a Franco vocal line is a different job.",
-  // VERIFY: "medical student" may be out of date. See the block at the top.
-  "Alongside the music she is a medical student, and holds a Bachelor's degree in Education Science, in mathematics and physics.",
+  "Alongside the music she is a medical doctor, and holds a Bachelor's degree in Education Science, in mathematics and physics.",
   "Her best-known recordings are Charonyi Ni Wasi, first done by the Maroon Commandos, and Afro, by Les Wanyika. She has since covered Ndaya by the Congolese great Mpongo Love, and Mario, by the Rhumba legend Franco.",
 ] as const;
 
@@ -52,6 +47,7 @@ export const FACTS: readonly Fact[] = [
   { term: "Based in", detail: "Nairobi, Kenya" },
   { term: "Sings in", detail: "Swahili, Lingala, English, Ekegusii" },
   { term: "Singing since", detail: "Age three" },
+  { term: "Also", detail: "Medical doctor" },
 ] as const;
 
 /**

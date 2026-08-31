@@ -40,11 +40,17 @@ export const SITE = {
   whatsappMessage: "Hi Serah, I'd like to talk about a booking.",
 
   /*
-   * VERIFY: the previous site had no custom domain configured beyond Vercel.
-   * Needed for canonical URLs, the sitemap and Open Graph tags, all of which
-   * require absolute URLs.
+   * The canonical origin. No trailing slash: every consumer appends a path that
+   * begins with one, and a double slash in a canonical or og:url is treated as
+   * a different URL by some crawlers.
+   *
+   * Used by canonical tags, Open Graph, Twitter cards, the sitemap and the
+   * JSON-LD, all of which require ABSOLUTE URLs. Getting this wrong does not
+   * break the build, it quietly points every social preview and every
+   * search-engine canonical at a domain that does not exist, so it is worth
+   * checking after any domain change.
    */
-  url: "https://serahke.com",
+  url: "https://serahkemusic.co.ke",
 } as const;
 
 /** The WhatsApp deep link, prefilled. Works on mobile and WhatsApp Web. */

@@ -4,8 +4,8 @@ import { FeaturedMusic } from "~/components/home/featured-music";
 import { Hero } from "~/components/home/hero";
 import { Story } from "~/components/home/story";
 import { TRACKS } from "~/content/music";
-import { SITE, SOCIAL_LINKS } from "~/content/site";
-import { musicGroupSchema, pageMeta } from "~/lib/meta";
+import { SITE } from "~/content/site";
+import { musicGroupSchema, pageMeta, webSiteSchema } from "~/lib/meta";
 
 import type { Route } from "./+types/home";
 
@@ -33,7 +33,7 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(musicGroupSchema(SOCIAL_LINKS)),
+          __html: JSON.stringify([musicGroupSchema(), webSiteSchema()]),
         }}
       />
       <Hero />
