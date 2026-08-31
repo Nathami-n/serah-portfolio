@@ -81,7 +81,7 @@ export default function Music() {
           ) : null}
 
           {/* The rest. */}
-          <ul className="mt-14 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 lg:grid-cols-3">
+          <ul className="mt-14 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
             {rest.map((track, i) => (
               <li key={track.id} className="min-w-0">
                 <Reveal index={Math.min(i, 4)}>
