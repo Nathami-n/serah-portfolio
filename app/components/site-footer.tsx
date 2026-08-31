@@ -98,13 +98,13 @@ export function SiteFooter() {
               Build credit. A real attribution, not a hidden backlink: it names
               the company and behaves like every other outbound link here.
             */}
-            <p className="-my-2 py-2">
+            <p>
               Built by{" "}
               <a
                 href={BUILT_BY.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground/80 underline-offset-4 transition-colors hover:text-primary hover:underline"
+                className="-my-2 inline-block py-2 text-foreground/80 underline-offset-4 transition-colors hover:text-primary hover:underline"
               >
                 {BUILT_BY.name}
               </a>
