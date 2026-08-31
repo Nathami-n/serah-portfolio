@@ -22,7 +22,7 @@ import { usePlaylist } from "~/hooks/use-playlist";
 const FEATURED = TRACKS.slice(0, 4);
 
 export function FeaturedMusic() {
-  const playlist = usePlaylist(FEATURED);
+  const playlist = usePlaylist();
 
   return (
     <Section className="py-16 sm:py-20">
@@ -84,12 +84,17 @@ export function FeaturedMusic() {
         </Reveal>
       </Container>
 
-      {playlist.current ? (
+      {/*
+        The player gets the FULL catalogue, not just the four featured tiles:
+        someone who starts playing here should be able to keep going through
+        everything rather than hitting a wall after four.
+      */}
+      {playlist.index !== null ? (
         <VideoPlayer
-          track={playlist.current}
+          tracks={TRACKS}
+          index={playlist.index}
           onClose={playlist.close}
-          onPrevious={playlist.onPrevious}
-          onNext={playlist.onNext}
+          onIndexChange={playlist.setIndex}
         />
       ) : null}
     </Section>

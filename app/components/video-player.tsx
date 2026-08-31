@@ -1,13 +1,14 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  Cancel01Icon,
   ArrowLeft01Icon,
   ArrowRight01Icon,
+  Cancel01Icon,
   PlayIcon,
 } from "@hugeicons/core-free-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { type Track, thumbnailUrl, watchUrl } from "~/content/music";
+import { YOUTUBE_CHANNEL } from "~/content/site";
 import { cn } from "~/lib/utils";
 
 /**
@@ -15,15 +16,22 @@ import { cn } from "~/lib/utils";
  *
  * DESIGN GOALS
  * ------------
- * 1. Nothing from YouTube loads until the visitor actually presses play. The
- *    grid renders a static thumbnail, so opening the music page sets no
- *    third-party cookies and costs no third-party JavaScript. The old site
- *    shipped `react-player` and mounted an iframe immediately, which loads
- *    YouTube's tracking for everyone, including the majority who never play
- *    anything.
- * 2. Once playing, the iframe uses youtube-nocookie.com.
- * 3. Full keyboard support. The old site's video modal could only be dismissed
- *    by clicking the backdrop: no Escape, no focus trap, no focus restore.
+ * 1. Nothing from YouTube loads until the visitor presses play. The grid shows
+ *    a static thumbnail, so opening the music page sets no third-party cookies
+ *    and costs no third-party JavaScript. The old site shipped `react-player`
+ *    and mounted an iframe immediately, loading YouTube's tracking for everyone
+ *    including the majority who never play anything. Once playing, the embed
+ *    uses youtube-nocookie.com.
+ *
+ * 2. It behaves like a playlist, not a lightbox with one video in it. The rail
+ *    underneath shows what is playing and what is next, and clicking any entry
+ *    switches to it without closing and reopening. That is the difference
+ *    between "watch this one video" and "keep listening", which is the whole
+ *    point for an artist whose catalogue is the product.
+ *
+ * 3. Full keyboard control, with the shortcuts actually visible rather than
+ *    hidden. The old site's modal could only be dismissed by clicking the
+ *    backdrop: no Escape, no focus trap, no focus restore.
  *
  * KEYBOARD
  *   Escape        close
@@ -33,36 +41,44 @@ import { cn } from "~/lib/utils";
  */
 
 interface VideoPlayerProps {
-  track: Track;
-  /** Called to close. */
+  /** The full list, so the player can show a playlist rail. */
+  tracks: readonly Track[];
+  /** Index of the playing track within `tracks`. */
+  index: number;
   onClose: () => void;
-  /** Step through the playlist. Null disables that direction. */
-  onPrevious: (() => void) | null;
-  onNext: (() => void) | null;
+  onIndexChange: (index: number) => void;
 }
 
 export function VideoPlayer({
-  track,
+  tracks,
+  index,
   onClose,
-  onPrevious,
-  onNext,
+  onIndexChange,
 }: VideoPlayerProps) {
+  const track = tracks[index];
+
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-
-  /*
-   * Remember what had focus before the dialog opened, and restore it on close.
-   * Without this, dismissing the dialog dumps keyboard focus back to the top of
-   * the document and the visitor loses their place in the list.
-   */
   const restoreFocusRef = useRef<HTMLElement | null>(null);
+  const railRef = useRef<HTMLDivElement>(null);
+
+  const hasPrevious = index > 0;
+  const hasNext = index < tracks.length - 1;
+
+  const goPrevious = useCallback(() => {
+    if (index > 0) onIndexChange(index - 1);
+  }, [index, onIndexChange]);
+
+  const goNext = useCallback(() => {
+    if (index < tracks.length - 1) onIndexChange(index + 1);
+  }, [index, onIndexChange, tracks.length]);
+
   useEffect(() => {
     restoreFocusRef.current = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
     return () => restoreFocusRef.current?.focus();
   }, []);
 
-  // Lock body scroll while open.
   useEffect(() => {
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -71,31 +87,41 @@ export function VideoPlayer({
     };
   }, []);
 
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
+  /*
+   * Keep the playing entry visible in the rail. Without this, stepping with the
+   * arrow keys eventually moves the highlight off-screen and the rail stops
+   * being useful.
+   */
+  useEffect(() => {
+    const active = railRef.current?.querySelector<HTMLElement>(
+      '[data-active="true"]',
+    );
+    active?.scrollIntoView({ block: "nearest", inline: "center" });
+  }, [index]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
         onClose();
         return;
       }
-      if (event.key === "ArrowLeft" && onPrevious) {
+      if (event.key === "ArrowLeft") {
         event.preventDefault();
-        onPrevious();
+        goPrevious();
         return;
       }
-      if (event.key === "ArrowRight" && onNext) {
+      if (event.key === "ArrowRight") {
         event.preventDefault();
-        onNext();
+        goNext();
         return;
       }
 
-      // Focus trap: keep Tab inside the dialog.
       if (event.key !== "Tab") return;
       const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
         'button:not([disabled]), a[href], iframe, [tabindex]:not([tabindex="-1"])',
       );
       if (!focusables || focusables.length === 0) return;
-
       const first = focusables[0]!;
       const last = focusables[focusables.length - 1]!;
       if (event.shiftKey && document.activeElement === first) {
@@ -105,40 +131,42 @@ export function VideoPlayer({
         event.preventDefault();
         first.focus();
       }
-    },
-    [onClose, onNext, onPrevious],
-  );
+    };
 
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [goNext, goPrevious, onClose]);
+
+  if (!track) return null;
+
+  const upNext = tracks[index + 1];
 
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-label={`Playing ${track.title}`}
-      className="fixed inset-0 z-100 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 p-3 backdrop-blur-sm sm:p-6"
       onClick={(event) => {
-        // Backdrop click closes, but a click inside the panel must not.
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <div
-        ref={dialogRef}
-        className="flex w-full max-w-5xl flex-col gap-3"
-      >
+      <div ref={dialogRef} className="flex w-full max-w-5xl flex-col gap-3">
+        {/* Title row */}
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <h2 className="truncate font-display text-lg font-medium text-white sm:text-xl">
               {track.title}
             </h2>
-            {track.originalArtist ? (
-              <p className="truncate text-sm text-white/60">
-                Originally {track.originalArtist}
-              </p>
-            ) : null}
+            <p className="truncate text-sm text-white/55">
+              {track.originalArtist
+                ? `Originally ${track.originalArtist}`
+                : "Serah Ke"}
+              <span className="mx-2 text-white/25">/</span>
+              <span className="tabular-nums">
+                {index + 1} of {tracks.length}
+              </span>
+            </p>
           </div>
 
           <button
@@ -146,19 +174,20 @@ export function VideoPlayer({
             type="button"
             onClick={onClose}
             aria-label="Close video"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-white/70 transition-colors hover:bg-white/10 hover:text-white"
           >
             <HugeiconsIcon icon={Cancel01Icon} size={22} strokeWidth={1.8} />
           </button>
         </div>
 
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
+        {/* The video */}
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black ring-1 ring-white/10">
           <iframe
             /*
-             * `key` forces a fresh iframe when the track changes. Without it,
+             * `key` forces a fresh iframe when the track changes. Without it
              * React reuses the element and only swaps the src, which YouTube's
              * player handles inconsistently: it can keep playing the previous
-             * video's audio over the new one.
+             * video's audio underneath the new one.
              */
             key={track.id}
             src={`https://www.youtube-nocookie.com/embed/${track.id}?autoplay=1&rel=0&modestbranding=1`}
@@ -169,23 +198,28 @@ export function VideoPlayer({
           />
         </div>
 
+        {/* Controls */}
         <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 items-center gap-2">
             <button
               type="button"
-              onClick={() => onPrevious?.()}
-              disabled={!onPrevious}
+              onClick={goPrevious}
+              disabled={!hasPrevious}
               aria-label="Previous track"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white/80 transition-colors hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-white/70 transition-colors hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-25"
             >
-              <HugeiconsIcon icon={ArrowLeft01Icon} size={20} strokeWidth={1.8} />
+              <HugeiconsIcon
+                icon={ArrowLeft01Icon}
+                size={20}
+                strokeWidth={1.8}
+              />
             </button>
             <button
               type="button"
-              onClick={() => onNext?.()}
-              disabled={!onNext}
+              onClick={goNext}
+              disabled={!hasNext}
               aria-label="Next track"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white/80 transition-colors hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-white/70 transition-colors hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-25"
             >
               <HugeiconsIcon
                 icon={ArrowRight01Icon}
@@ -193,17 +227,96 @@ export function VideoPlayer({
                 strokeWidth={1.8}
               />
             </button>
+
+            {/* What is coming, so the rail has a reason to exist. */}
+            {upNext ? (
+              <p className="ml-1 hidden min-w-0 truncate text-sm text-white/45 sm:block">
+                Up next: <span className="text-white/70">{upNext.title}</span>
+              </p>
+            ) : null}
           </div>
 
           <a
             href={watchUrl(track.id)}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-white/60 transition-colors hover:text-white"
+            className="shrink-0 text-sm text-white/55 transition-colors hover:text-white"
           >
             Watch on YouTube
           </a>
         </div>
+
+        {/*
+          PLAYLIST RAIL.
+          Horizontally scrollable on every size. Hidden below sm, where the
+          screen is already mostly video and a rail would push the controls off.
+        */}
+        <div
+          ref={railRef}
+          className="hidden gap-2 overflow-x-auto pb-1 sm:flex [scrollbar-width:thin]"
+        >
+          {tracks.map((item, i) => (
+            <button
+              key={item.id}
+              type="button"
+              data-active={i === index}
+              onClick={() => onIndexChange(i)}
+              aria-label={`Play ${item.title}`}
+              aria-current={i === index ? "true" : undefined}
+              className={cn(
+                "group relative w-32 shrink-0 overflow-hidden rounded text-left transition-opacity",
+                i === index ? "opacity-100" : "opacity-45 hover:opacity-80",
+              )}
+            >
+              <div className="relative overflow-hidden rounded bg-white/5">
+                <img
+                  src={thumbnailUrl(item.id)}
+                  alt=""
+                  width={480}
+                  height={360}
+                  loading="lazy"
+                  className="aspect-video w-full scale-[1.35] object-cover"
+                />
+                {i === index ? (
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center justify-center bg-black/40"
+                  >
+                    <HugeiconsIcon
+                      icon={PlayIcon}
+                      size={16}
+                      strokeWidth={2.5}
+                      className="text-primary"
+                    />
+                  </span>
+                ) : null}
+              </div>
+              <p
+                className={cn(
+                  "mt-1.5 truncate text-xs",
+                  i === index ? "text-white" : "text-white/70",
+                )}
+              >
+                {item.title}
+              </p>
+            </button>
+          ))}
+
+          {/* The rail ends by pointing at the rest of the catalogue. */}
+          <a
+            href={YOUTUBE_CHANNEL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-32 shrink-0 flex-col items-center justify-center rounded border border-dashed border-white/20 px-2 py-4 text-center text-xs text-white/50 transition-colors hover:border-white/40 hover:text-white"
+          >
+            More on YouTube
+          </a>
+        </div>
+
+        {/* Keyboard hints. Desktop only: there is no keyboard to hint at on touch. */}
+        <p className="hidden text-center text-xs text-white/25 lg:block">
+          Arrow keys to change track, Esc to close
+        </p>
       </div>
     </div>
   );
@@ -247,10 +360,6 @@ export function VideoThumbnail({
           height={360}
           loading="lazy"
           onLoad={() => setLoaded(true)}
-          /*
-           * YouTube's hqdefault is 4:3 with black bars top and bottom on 16:9
-           * video. Scaling up and cropping to aspect-video removes them.
-           */
           className={cn(
             "aspect-video w-full scale-[1.35] object-cover transition-[transform,opacity] duration-500",
             "group-hover:scale-[1.42]",
@@ -258,7 +367,6 @@ export function VideoThumbnail({
           )}
         />
 
-        {/* Play affordance. Sits above the image, ignores pointer events. */}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 flex items-center justify-center"

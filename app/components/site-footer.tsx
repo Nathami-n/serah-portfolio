@@ -28,7 +28,7 @@ export function SiteFooter() {
               href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 w-fit text-sm text-primary transition-colors hover:text-primary/80"
+              className="mt-1 w-fit py-1 text-sm text-primary transition-colors hover:text-primary/80"
             >
               Enquire about a booking
             </a>
@@ -44,7 +44,7 @@ export function SiteFooter() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+                      className="-my-1 inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-foreground"
                     >
                       {link.label}
                     </Link>
@@ -64,7 +64,7 @@ export function SiteFooter() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+                      className="-my-1 inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-foreground"
                     >
                       {social.label}
                     </a>

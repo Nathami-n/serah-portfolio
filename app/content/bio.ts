@@ -27,8 +27,8 @@ export const SHORT_BIO =
  * splitting prose in a component.
  */
 export const BIO_PARAGRAPHS: readonly string[] = [
-  "Serah discovered she could sing at three years old, in a local church choir. What began there turned into a career built on a specific and unfashionable conviction: that the African classics deserve to be sung properly, not merely sampled.",
-  "She works in Zilizopendwa and Rhumba, the music of Franco, Mpongo Love, Les Wanyika and the Maroon Commandos. Her covers are not nostalgia pieces. She sings them straight, with a contemporary production sensibility and a voice that can carry the originals, which is a harder thing than it sounds.",
+  "Serah works in a repertoire most singers her age have only heard sampled: Zilizopendwa and Rhumba, the music of Franco, Mpongo Love, Les Wanyika and the Maroon Commandos. She sings it straight, at full length, with the arrangements intact.",
+  "Her covers are not nostalgia pieces, and they are not novelty either. The songs are treated as the standards they are, given a contemporary recording and a voice with enough range to hold them. Anyone can put a Rhumba track through a modern mix; carrying a Franco vocal line is a different job.",
   // VERIFY: "medical student" may be out of date. See the block at the top.
   "Alongside the music she is a medical student, and holds a Bachelor's degree in Education Science, in mathematics and physics.",
   "Her best-known recordings are Charonyi Ni Wasi, first done by the Maroon Commandos, and Afro, by Les Wanyika. She has since covered Ndaya by the Congolese great Mpongo Love, and Mario, by the Rhumba legend Franco.",
@@ -51,7 +51,7 @@ export const FACTS: readonly Fact[] = [
   { term: "Genre", detail: "Rhumba, Zilizopendwa, African classics" },
   { term: "Based in", detail: "Nairobi, Kenya" },
   { term: "Sings in", detail: "Swahili, Lingala, English, Ekegusii" },
-  { term: "Started", detail: "Age three, in a church choir" },
+  { term: "Singing since", detail: "Age three" },
 ] as const;
 
 /**

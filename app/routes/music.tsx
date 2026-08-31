@@ -34,7 +34,7 @@ export const meta: Route.MetaFunction = () =>
  * the channel rather than implying these ten are everything.
  */
 export default function Music() {
-  const playlist = usePlaylist(TRACKS);
+  const playlist = usePlaylist();
 
   const [lead, ...rest] = TRACKS;
 
@@ -114,12 +114,12 @@ export default function Music() {
         </Container>
       </Section>
 
-      {playlist.current ? (
+      {playlist.index !== null ? (
         <VideoPlayer
-          track={playlist.current}
+          tracks={TRACKS}
+          index={playlist.index}
           onClose={playlist.close}
-          onPrevious={playlist.onPrevious}
-          onNext={playlist.onNext}
+          onIndexChange={playlist.setIndex}
         />
       ) : null}
     </>

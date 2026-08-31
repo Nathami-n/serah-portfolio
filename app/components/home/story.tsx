@@ -33,18 +33,19 @@ export function Story() {
           <div className="flex min-w-0 flex-col gap-6 lg:order-1">
             <Reveal>
               <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-                She started at three,
-                <br className="hidden sm:block" /> in a church choir.
+                These songs were
+                <br className="hidden sm:block" /> never meant to be
+                <br className="hidden sm:block" /> museum pieces.
               </h2>
             </Reveal>
 
             <Reveal index={1}>
               <p className="w-full max-w-[52ch] text-base leading-[1.65] text-muted-foreground sm:text-lg">
-                What began there turned into a career built on an unfashionable
-                conviction: that the African classics deserve to be sung
-                properly, not merely sampled. She sings them straight, with a
-                voice that can carry the originals, which is harder than it
-                sounds.
+                Franco, Mpongo Love, Les Wanyika. Serah sings them straight, at
+                full length, with the arrangements intact. No irony, no remix,
+                no apology for the tempo. It takes a voice that can actually
+                carry the originals, and that is rarer than the sheer number of
+                covers out there suggests.
               </p>
             </Reveal>
 

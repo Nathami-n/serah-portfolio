@@ -20,8 +20,20 @@ export const meta: Route.MetaFunction = () => [
   { name: "description", content: SITE.description },
 ];
 
+/**
+ * Favicons, generated from her real logo mark by scripts/generate-favicons.mjs.
+ *
+ * The SVG is listed first so modern browsers use the crisp vector at any size;
+ * the PNGs are fallbacks. The mark is rendered in brand gold on the dark
+ * surface, because the source logo asset is hardcoded black and disappears
+ * against a dark browser tab.
+ */
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+  { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+  { rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+  { rel: "manifest", href: "/site.webmanifest" },
 ];
 
 /**

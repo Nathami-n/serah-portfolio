@@ -66,16 +66,14 @@ export const NAV_LINKS = [
 ] as const;
 
 /*
- * Her YouTube channel.
+ * Her YouTube channel. Confirmed by Serah's team, note the underscore and the
+ * capital K: @serah_Ke, not @serahke.
  *
  * The catalogue in content/music.ts is a curated selection, NOT everything she
  * has published. The channel has more, and it keeps growing, so every music
  * surface links out to it rather than pretending the list is complete.
- *
- * VERIFY: confirm this handle resolves. It was inferred from the social links
- * on the old site, which linked to individual videos rather than the channel.
  */
-export const YOUTUBE_CHANNEL = "https://www.youtube.com/@serahke";
+export const YOUTUBE_CHANNEL = "https://www.youtube.com/@serah_Ke";
 
 /**
  * Social links.
@@ -88,7 +86,7 @@ export const YOUTUBE_CHANNEL = "https://www.youtube.com/@serahke";
 export const SOCIAL_LINKS = [
   {
     label: "YouTube",
-    handle: "@serahke",
+    handle: "@serah_Ke",
     href: YOUTUBE_CHANNEL,
   },
   {
