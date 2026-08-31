@@ -6,9 +6,17 @@
  * classics, and naming the original is the respect the genre runs on. It is
  * also what a Zilizopendwa listener actually searches for.
  *
- * VERIFY: this list ends where the old site stopped being updated. Ask Serah
- * for anything released since, and for the release years, which the old site
- * never recorded.
+ * CURATED BY HAND, DELIBERATELY. All ten videos were re-verified live on
+ * 2026-08-31 via YouTube's keyless oEmbed endpoint.
+ *
+ * Do NOT replace this with an automatic pull from the channel feed. The raw
+ * YouTube titles are ringtone marketing, not song titles, e.g.
+ *   "CHARONYI NI WASI (COVER)OFFICIAL VIDEO SMS 'Skiza 7743096' to 811 for..."
+ * and the channel's fifteen most recent uploads are all Shorts titled with
+ * hashtag spam ("#shortsfeed #serahke #shortsviral"). Auto-syncing would
+ * replace a clean catalogue with that. The titles here are the editorial
+ * ones; the Skiza codes below were salvaged FROM those raw titles, which is
+ * the one genuinely useful thing they carried.
  *
  * NOTE ON THUMBNAILS: the old site hotlinked i.ytimg.com thumbnail URLs
  * carrying expiring `sqp`/`rs` signature params. Those URLs rot. We derive the
@@ -25,29 +33,42 @@ export interface Track {
   readonly originalArtist: string | null;
   /** One line of why this one matters. Shown on the music page, not the grid. */
   readonly note?: string;
+  /**
+   * Safaricom Skiza ringtone code, where one exists.
+   *
+   * A real revenue stream for a Kenyan artist and one the old site never
+   * surfaced at all. Recovered from the video titles on her channel, which
+   * carry them as "SMS 'Skiza 7743096' to 811". Subscribing is
+   * `SMS <code> to 811`, which is why the UI shows both parts.
+   */
+  readonly skiza?: string;
 }
 
 export const TRACKS: readonly Track[] = [
   {
     id: "AQrj2WoHjOs",
+    skiza: "7743096",
     title: "Charonyi Ni Wasi",
     originalArtist: "Maroon Commandos",
     note: "One of her signature covers, and the one people ask for by name.",
   },
   {
     id: "q4T6Wx7og8k",
+    skiza: "7743094",
     title: "Afro",
     originalArtist: "Les Wanyika",
     note: "A Les Wanyika standard, and the other song she is best known for.",
   },
   {
     id: "XjB8A-UIxj4",
+    skiza: "7743097",
     title: "Mario",
     originalArtist: "Franco",
     note: "Franco's Rhumba classic, and among her most recent recordings.",
   },
   {
     id: "nl7EFmzUlQA",
+    skiza: "7743099",
     title: "Ndaya",
     originalArtist: "Mpongo Love",
     note: "The Congolese great, covered in full.",
@@ -59,16 +80,19 @@ export const TRACKS: readonly Track[] = [
   },
   {
     id: "rApKXFBzg-s",
+    skiza: "7743095",
     title: "Angelike",
     originalArtist: null,
   },
   {
     id: "2yUiB5J1_p4",
+    skiza: "7743101",
     title: "Sina Makosa",
     originalArtist: "Les Wanyika",
   },
   {
     id: "dCLB1oC9SPQ",
+    skiza: "7743098",
     title: "Massu",
     originalArtist: null,
   },
@@ -79,9 +103,9 @@ export const TRACKS: readonly Track[] = [
   },
   {
     id: "Y1qULpT0eWU",
-    title: "Silent Night",
+    title: "Silent Night / Malaika",
     originalArtist: null,
-    note: "A Christmas recording.",
+    note: "A Christmas mashup, pairing Silent Night with Malaika.",
   },
 ] as const;
 

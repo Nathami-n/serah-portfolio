@@ -64,7 +64,7 @@ export function SiteFooter() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="-my-1 inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-foreground"
+                      className="inline-block py-2 text-sm text-foreground/80 transition-colors hover:text-foreground"
                     >
                       {social.label}
                     </a>

@@ -1,5 +1,5 @@
 import { PlaceholderPage } from "~/components/placeholder-page";
-import { pageMeta } from "~/lib/meta";
+import { breadcrumbSchema, pageMeta } from "~/lib/meta";
 
 import type { Route } from "./+types/shop";
 
@@ -12,10 +12,18 @@ export const meta: Route.MetaFunction = () =>
 
 export default function Shop() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Shop", path: "/shop" }])),
+        }}
+      />
     <PlaceholderPage
       title="Shop"
       description="There is nothing to buy here yet. When there is, it will be here. Until then, the music is all on YouTube and the fastest way to reach Serah is WhatsApp."
       actionLabel="Message Serah"
     />
+    </>
   );
 }

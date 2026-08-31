@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 import { Image } from "~/components/image";
-import { HeroReveal } from "~/components/motion/primitives";
+import { HeroReveal, Parallax, WordReveal } from "~/components/motion/primitives";
 import { buttonStyles } from "~/components/ui/button";
 import { HERO_PHOTO } from "~/content/gallery";
 import { whatsappLink } from "~/content/site";
@@ -28,15 +28,16 @@ export function Hero() {
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 pb-16 pt-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-8 lg:pb-24 lg:pt-20">
         {/* min-w-0 so this text column cannot force the grid past the viewport */}
         <div className="flex min-w-0 flex-col items-start gap-6">
-          <HeroReveal index={0}>
-            <h1 className="font-display text-[clamp(2.75rem,8vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
-              The African
-              <br />
-              classics, sung
-              <br />
-              properly.
-            </h1>
-          </HeroReveal>
+          {/*
+            Word-by-word resolve rather than a single fade. The full string is
+            exposed to assistive tech in one piece; only the visual
+            presentation is staggered.
+          */}
+          <WordReveal
+            as="h1"
+            text="The African classics, sung properly."
+            className="font-display text-[clamp(2.75rem,8vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]"
+          />
 
           <HeroReveal index={1}>
             <p className="w-full max-w-[46ch] text-lg leading-[1.6] text-muted-foreground">
@@ -63,7 +64,7 @@ export function Hero() {
           </HeroReveal>
         </div>
 
-        <HeroReveal index={1} className="min-w-0">
+        <HeroReveal index={2} className="min-w-0">
           {/*
             `priority` on this one image only: it is the largest thing above the
             fold, so it should not be lazy-loaded. Marking everything priority
@@ -73,13 +74,16 @@ export function Hero() {
             column is a little under half of a 1152px container, so telling the
             browser 45vw stops it fetching the 1920px variant for a ~520px box.
           */}
-          <Image
-            slug={HERO_PHOTO}
-            alt="Serah Ke seated against a dark panelled wall, laughing, holding a bouquet of yellow flowers."
-            priority
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="rounded-lg"
-          />
+          {/* Small parallax drift, ~40px over the scroll through. */}
+          <Parallax distance={28}>
+            <Image
+              slug={HERO_PHOTO}
+              alt="Serah Ke seated against a dark panelled wall, laughing, holding a bouquet of yellow flowers."
+              priority
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="rounded-lg"
+            />
+          </Parallax>
         </HeroReveal>
       </div>
     </section>

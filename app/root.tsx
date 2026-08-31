@@ -7,6 +7,9 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { Image } from "~/components/image";
+import { PageTransition } from "~/components/motion/page-transition";
+import { ScrollProgress } from "~/components/motion/primitives";
 import { SiteFooter } from "~/components/site-footer";
 import { SiteHeader } from "~/components/site-header";
 import { buttonStyles } from "~/components/ui/button";
@@ -72,9 +75,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <div className="flex min-h-dvh flex-col">
+      <ScrollProgress />
       <SiteHeader />
       <main className="flex-1">
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
       <SiteFooter />
     </div>
@@ -97,23 +103,49 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     stack = error.stack;
   }
 
+  const is404 = isRouteErrorResponse(error) && error.status === 404;
+
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
       <main className="flex flex-1 items-center">
-        <div className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-6 lg:px-8">
-          <div className="flex max-w-xl flex-col items-start gap-5">
-            <p className="font-display text-sm text-primary">
-              {isRouteErrorResponse(error) ? error.status : "Error"}
-            </p>
-            <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-              {heading}
-            </h1>
-            <p className="text-muted-foreground">{details}</p>
-            <a href="/" className={buttonStyles({ className: "mt-2" })}>
-              Back to home
-            </a>
+        <div className="mx-auto w-full max-w-6xl px-5 py-20 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center lg:gap-16">
+            <div className="flex min-w-0 max-w-xl flex-col items-start gap-5">
+              <p className="font-display text-sm text-primary">
+                {isRouteErrorResponse(error) ? error.status : "Error"}
+              </p>
+              <h1 className="font-display text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+                {heading}
+              </h1>
+              <p className="text-muted-foreground">{details}</p>
+
+              {/*
+                A 404 should offer somewhere to go, not just apologise. These
+                are the two things almost anyone landing here actually wants.
+              */}
+              <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+                <a href="/music" className={buttonStyles()}>
+                  Listen to the music
+                </a>
+                <a href="/" className={buttonStyles({ variant: "outline" })}>
+                  Back to home
+                </a>
+              </div>
+            </div>
+
+            {is404 ? (
+              <div className="min-w-0">
+                <Image
+                  slug="awards-sit"
+                  alt="Serah in a black wide-brimmed hat and red plaid shirt, seated in a pink armchair."
+                  sizes="(min-width: 1024px) 36vw, 100vw"
+                  className="rounded-lg"
+                />
+              </div>
+            ) : null}
           </div>
+
           {stack ? (
             <pre className="mt-8 w-full overflow-x-auto border border-border bg-muted p-4 text-xs">
               <code>{stack}</code>

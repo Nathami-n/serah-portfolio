@@ -61,6 +61,40 @@ const JPEG = { quality: 80, mozjpeg: true, progressive: true };
 /** Files that are UI chrome rather than photography, so they are left alone. */
 const SKIP = new Set(["serahLogo.svg", "musiclogo.svg"]);
 
+/**
+ * Only these are processed.
+ *
+ * assets-source/ holds every original ever used by the old site, including
+ * page-header stock (albums.jpg, events.jpg, shop.jpg), a stray logo raster,
+ * two background plates and three casual behind-the-scenes shots. Processing
+ * all of them wrote 9MB of variants that nothing on the site references, and
+ * `public/img` IS committed and deployed, so that was 9MB of dead weight in
+ * the repo and the build.
+ *
+ * The list mirrors the slugs used in app/content/gallery.ts. If you add a
+ * photograph to the gallery, add its slug here and re-run `pnpm images`; the
+ * <Image> component throws in dev on a missing slug, so a mismatch is loud.
+ */
+const INCLUDE = new Set([
+  "awards-studio",
+  "awards-sit",
+  "awards-serahdancing",
+  "awards-trophy",
+  "awards-carnival",
+  "awards-carnival2",
+  "awards-carnival3",
+  "awards-machoka",
+  "awards-kalonzo2",
+  "serahabout",
+]);
+
+/** `awards/foo.jpg` -> `awards-foo`. Shared by the filter and the writer. */
+const slugFor = (rel) =>
+  rel
+    .replace(/\.[^.]+$/, "")
+    .replace(/[\\/]/g, "-")
+    .toLowerCase();
+
 /** Recursively collect every raster image under a directory. */
 async function collect(dir, base = "") {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -104,7 +138,9 @@ async function main() {
     return;
   }
 
-  const sources = await collect(SOURCE_DIR);
+  const allSources = await collect(SOURCE_DIR);
+  const sources = allSources.filter((rel) => INCLUDE.has(slugFor(rel)));
+  const skipped = allSources.length - sources.length;
   if (sources.length === 0) {
     console.error("assets-source/ contains no .jpg/.jpeg/.png files.");
     process.exitCode = 1;
@@ -148,11 +184,7 @@ async function main() {
       );
     }
 
-    // Flatten `awards/foo.jpg` -> `awards-foo` so output is a single flat dir.
-    const slug = rel
-      .replace(/\.[^.]+$/, "")
-      .replace(/[\\/]/g, "-")
-      .toLowerCase();
+    const slug = slugFor(rel);
 
     // Never upscale: an 800px-wide source should not be written at 1920.
     const widths = WIDTHS.filter((w) => w <= (meta.width ?? 0));
@@ -205,7 +237,8 @@ async function main() {
   const inMb = (totalIn / 1024 / 1024).toFixed(1);
   const outMb = (totalOut / 1024 / 1024).toFixed(1);
   console.log(
-    `\n${sources.length} images.  originals ${inMb}MB -> output ${outMb}MB ` +
+    `\n${sources.length} images (${skipped} in assets-source/ not in INCLUDE, skipped). ` +
+      `originals ${inMb}MB -> output ${outMb}MB ` +
       `(all formats, all widths combined).\n` +
       `A single page loads one format at one width, so real transfer is a ` +
       `small fraction of that.\nManifest: app/content/image-manifest.json`,
