@@ -2,24 +2,27 @@
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
-*.local
-.env
+.DS_Store
 
-# Editor directories and files
+# Build output
+build
+.react-router
+.vercel
+
+# Env
+.env
+*.local
+
+# Full-resolution image masters.
+# These are the originals the `pnpm images` pipeline reads. They are NOT
+# deployables: the optimised output in public/img/ is what ships and IS
+# committed. Keep a backup of this folder somewhere off this machine.
+assets-source
+
+# Editor
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
