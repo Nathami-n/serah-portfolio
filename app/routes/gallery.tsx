@@ -71,16 +71,17 @@ export default function Gallery() {
                   <Image
                     slug={photo.slug}
                     alt={photo.alt}
+                    imgClassName="transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                     /*
                      * Two columns on mobile, three from lg. A tile is never
                      * more than half the viewport, so telling the browser 50vw
                      * / 33vw stops it fetching variants far wider than needed.
                      */
                     sizes="(min-width: 1024px) 33vw, 50vw"
-                    className="rounded-md transition-opacity duration-300 group-hover:opacity-90"
+                    className="overflow-hidden rounded-md"
                   />
                   {photo.caption ? (
-                    <figcaption className="mt-2 text-xs text-muted-foreground">
+                    <figcaption className="mt-2 text-xs text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
                       {photo.caption}
                     </figcaption>
                   ) : null}

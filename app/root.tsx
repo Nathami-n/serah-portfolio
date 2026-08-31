@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { PageTransition } from "~/components/motion/page-transition";
+import { ScrollProgress } from "~/components/motion/primitives";
 import { SiteFooter } from "~/components/site-footer";
 import { SiteHeader } from "~/components/site-header";
 import { buttonStyles } from "~/components/ui/button";
@@ -72,9 +74,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <div className="flex min-h-dvh flex-col">
+      <ScrollProgress />
       <SiteHeader />
       <main className="flex-1">
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
       <SiteFooter />
     </div>
