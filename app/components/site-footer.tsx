@@ -28,7 +28,7 @@ export function SiteFooter() {
               href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 w-fit py-1 text-sm text-primary transition-colors hover:text-primary/80"
+              className="mt-1 w-fit py-2 text-sm text-primary transition-colors hover:text-primary/80"
             >
               Enquire about a booking
             </a>
@@ -39,12 +39,12 @@ export function SiteFooter() {
               <h2 className="text-xs font-medium text-muted-foreground">
                 Pages
               </h2>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-0.5">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="-my-1 inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-foreground"
+                      className="inline-block py-2 text-sm text-foreground/80 transition-colors hover:text-foreground"
                     >
                       {link.label}
                     </Link>
@@ -57,7 +57,7 @@ export function SiteFooter() {
               <h2 className="text-xs font-medium text-muted-foreground">
                 Elsewhere
               </h2>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-0.5">
                 {SOCIAL_LINKS.map((social) => (
                   <li key={social.href}>
                     <a
@@ -81,7 +81,7 @@ export function SiteFooter() {
           </p>
           <a
             href={`mailto:${SITE.email}`}
-            className="transition-colors hover:text-foreground"
+            className="-my-2 inline-block py-2 transition-colors hover:text-foreground"
           >
             {SITE.email}
           </a>

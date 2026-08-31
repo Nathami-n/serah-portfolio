@@ -68,7 +68,7 @@ export function Story() {
             <Reveal index={3}>
               <Link
                 to="/about"
-                className="mt-2 w-fit border-b border-foreground/25 pb-0.5 text-sm transition-colors hover:border-primary hover:text-primary"
+                className="mt-2 w-fit border-b border-foreground/25 pb-2 pt-2 text-sm transition-colors hover:border-primary hover:text-primary"
               >
                 Read her story
               </Link>

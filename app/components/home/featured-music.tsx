@@ -34,7 +34,7 @@ export function FeaturedMusic() {
           />
           <Link
             to="/music"
-            className="group inline-flex shrink-0 items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="group -my-2 inline-flex shrink-0 items-center gap-1.5 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             All {TRACKS.length} recordings
             <HugeiconsIcon
@@ -70,7 +70,7 @@ export function FeaturedMusic() {
             href={YOUTUBE_CHANNEL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group mt-10 inline-flex items-center gap-2.5 border-b border-foreground/20 pb-1 text-sm transition-colors hover:border-primary hover:text-primary"
+            className="group mt-10 inline-flex items-center gap-2.5 border-b border-foreground/20 pb-2 pt-2 text-sm transition-colors hover:border-primary hover:text-primary"
           >
             <HugeiconsIcon icon={YoutubeIcon} size={18} strokeWidth={1.8} />
             More on her YouTube channel
