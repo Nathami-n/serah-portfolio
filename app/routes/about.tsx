@@ -14,7 +14,7 @@ export const meta: Route.MetaFunction = () =>
   pageMeta({
     title: "About",
     description:
-      "Serah Nyaboke, known as Serah Ke, sings Rhumba and Zilizopendwa. She started singing at three in a church choir and holds an honorary music industry award.",
+      "Serah Nyaboke, known as Serah Ke, sings Rhumba and Zilizopendwa: Franco, Mpongo Love, Les Wanyika. Honorary Award winner, Music Industry.",
     path: "/about",
     image: "awards-studio",
   });
@@ -35,27 +35,39 @@ export default function About() {
     <>
       <Section className="pb-16 pt-14 sm:pb-20 sm:pt-20">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:gap-16">
+          {/*
+            The portrait sticks while the bio scrolls past it. `items-start` on
+            the grid is what makes this work: the default `stretch` would make
+            the image column full height, and a sticky element inside a
+            full-height container has nowhere to travel.
+
+            Sticky degrades to static on its own where it is unsupported, and
+            the single-column mobile layout never triggers it because the
+            column is not taller than the viewport-minus-offset.
+          */}
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-start lg:gap-16">
             <div className="flex min-w-0 flex-col gap-6">
               <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-[-0.035em] sm:text-5xl">
                 Serah Nyaboke
               </h1>
 
               {BIO_PARAGRAPHS.map((paragraph, index) => (
-                <p
-                  key={paragraph.slice(0, 32)}
-                  className={
-                    index === 0
-                      ? "w-full max-w-[60ch] text-lg leading-[1.6] text-foreground/90 sm:text-xl"
-                      : "w-full max-w-[62ch] text-base leading-[1.65] text-muted-foreground"
-                  }
-                >
-                  {paragraph}
-                </p>
+                <Reveal key={paragraph.slice(0, 32)} index={Math.min(index, 3)}>
+                  <p
+                    className={
+                      index === 0
+                        ? "w-full max-w-[60ch] text-lg leading-[1.6] text-foreground/90 sm:text-xl"
+                        : "w-full max-w-[62ch] text-base leading-[1.65] text-muted-foreground"
+                    }
+                  >
+                    {paragraph}
+                  </p>
+                </Reveal>
               ))}
             </div>
 
-            <div className="min-w-0">
+            {/* top-24 clears the sticky header, which is h-16 / lg:h-18. */}
+            <div className="min-w-0 lg:sticky lg:top-24">
               <Image
                 slug="awards-studio"
                 alt="Serah seated on a stool against a dark panelled wall, holding a bouquet of yellow flowers."

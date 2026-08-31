@@ -19,10 +19,19 @@ const PAGES = [
 ] as const;
 
 export function loader() {
+  /*
+   * `lastmod` is the build date. This is honest for a site whose content ships
+   * with the code: a deploy IS the last modification. Do not fabricate
+   * per-page dates, crawlers discount a sitemap whose lastmod values do not
+   * match what actually changed.
+   */
+  const lastmod = new Date().toISOString().slice(0, 10);
+
   const urls = PAGES.map(
     ({ path, priority }) =>
       `  <url>\n` +
       `    <loc>${SITE.url}${path === "/" ? "/" : path}</loc>\n` +
+      `    <lastmod>${lastmod}</lastmod>\n` +
       `    <priority>${priority}</priority>\n` +
       `  </url>`,
   ).join("\n");

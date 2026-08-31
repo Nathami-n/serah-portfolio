@@ -25,13 +25,16 @@ export const SITE = {
   location: "Nairobi, Kenya",
 
   /*
-   * VERIFY: placeholder. Bookings are the point of this site and WhatsApp is
-   * how they actually happen in Kenya, so this must be a real number before
-   * launch. Format: international, digits only, no +, no spaces.
-   * Example: 254712345678
+   * Bookings run through WhatsApp, which is how they actually happen in Kenya.
+   *
+   * Stored in INTERNATIONAL format, digits only, no + and no spaces, because
+   * that is what wa.me requires. The number was supplied as 0771642266, the
+   * local Kenyan form; the leading 0 is a domestic trunk prefix and is replaced
+   * by the 254 country code rather than kept. A wa.me link with the 0 left in
+   * resolves to no account and fails silently, which is the worst possible
+   * failure mode for the site's primary call to action.
    */
-  whatsapp: "254700000000",
-  whatsappIsPlaceholder: true,
+  whatsapp: "254771642266",
 
   /** Prefilled so an enquiry arrives with context instead of a bare "hi". */
   whatsappMessage: "Hi Serah, I'd like to talk about a booking.",
