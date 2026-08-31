@@ -3,6 +3,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 
 import { Reveal } from "~/components/motion/primitives";
 import { Container, Section, SectionHeading } from "~/components/section";
+import { SkizaBadge } from "~/components/skiza-badge";
 import { VideoPlayer, VideoThumbnail } from "~/components/video-player";
 import { TRACKS } from "~/content/music";
 import { YOUTUBE_CHANNEL } from "~/content/site";
@@ -66,13 +67,16 @@ export default function Music() {
                   onPlay={() => playlist.play(0)}
                 />
               </Reveal>
-              {lead.note ? (
-                <Reveal index={1} className="min-w-0">
-                  <p className="w-full max-w-[46ch] text-base leading-[1.65] text-muted-foreground sm:text-lg">
-                    {lead.note}
-                  </p>
-                </Reveal>
-              ) : null}
+              <Reveal index={1} className="min-w-0">
+                <div className="flex flex-col gap-5">
+                  {lead.note ? (
+                    <p className="w-full max-w-[46ch] text-base leading-[1.65] text-muted-foreground sm:text-lg">
+                      {lead.note}
+                    </p>
+                  ) : null}
+                  {lead.skiza ? <SkizaBadge code={lead.skiza} /> : null}
+                </div>
+              </Reveal>
             </div>
           ) : null}
 

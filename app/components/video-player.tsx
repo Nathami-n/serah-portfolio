@@ -7,6 +7,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { SkizaBadge } from "~/components/skiza-badge";
 import { type Track, thumbnailUrl, watchUrl } from "~/content/music";
 import { YOUTUBE_CHANNEL } from "~/content/site";
 import { cn } from "~/lib/utils";
@@ -197,6 +198,18 @@ export function VideoPlayer({
             className="absolute inset-0 h-full w-full border-0"
           />
         </div>
+
+        {/*
+          The Skiza offer, shown while the song is actually playing. This is the
+          moment someone decides they like it, which is the only moment the
+          offer is welcome rather than an advert.
+        */}
+        {track.skiza ? (
+          <SkizaBadge
+            code={track.skiza}
+            className="border-white/15 bg-white/5 hover:border-primary/60"
+          />
+        ) : null}
 
         {/* Controls */}
         <div className="flex items-center justify-between gap-3">
