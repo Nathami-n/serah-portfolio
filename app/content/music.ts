@@ -6,8 +6,15 @@
  * classics, and naming the original is the respect the genre runs on. It is
  * also what a Zilizopendwa listener actually searches for.
  *
- * CURATED BY HAND, DELIBERATELY. All ten videos were re-verified live on
+ * CURATED BY HAND, DELIBERATELY. All fourteen videos were verified live on
  * 2026-08-31 via YouTube's keyless oEmbed endpoint.
+ *
+ * The list is kept in reverse-chronological order, newest first, so the lead
+ * slot on /music is always her most recent work. Four were added on 2026-08-31
+ * after reading the channel listing: Taabu / Twist Ni Nzuri, Suzanna, Kasongo
+ * and Shida. Two other non-Shorts on the channel are deliberately NOT here:
+ * "WHY SHIDA?" (a behind-the-scenes piece, not a recording) and "Am Back!" (a
+ * channel announcement). The catalogue is songs only.
  *
  * Do NOT replace this with an automatic pull from the channel feed. The raw
  * YouTube titles are ringtone marketing, not song titles, e.g.
@@ -46,6 +53,29 @@ export interface Track {
 
 export const TRACKS: readonly Track[] = [
   {
+    id: "KMrSuUMfiSI",
+    title: "Taabu / Twist Ni Nzuri",
+    originalArtist: null,
+    note: "Her most recent release, pairing two songs in a single cut.",
+  },
+  {
+    id: "5hrGCiruwuk",
+    title: "Suzanna",
+    originalArtist: "Mbilia Bel",
+  },
+  {
+    id: "9Ms0GzAhuPQ",
+    title: "Kasongo",
+    originalArtist: "Orchestra Super Mazembe",
+    note: "The Super Mazembe standard, and one of the best-known Swahili Rhumba records ever cut.",
+  },
+  {
+    id: "dnrkaKHyMMc",
+    skiza: "7743121",
+    title: "Shida",
+    originalArtist: null,
+  },
+  {
     id: "AQrj2WoHjOs",
     skiza: "7743096",
     title: "Charonyi Ni Wasi",
@@ -64,7 +94,7 @@ export const TRACKS: readonly Track[] = [
     skiza: "7743097",
     title: "Mario",
     originalArtist: "Franco",
-    note: "Franco's Rhumba classic, and among her most recent recordings.",
+    note: "Franco's Rhumba classic.",
   },
   {
     id: "nl7EFmzUlQA",

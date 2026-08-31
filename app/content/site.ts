@@ -74,6 +74,18 @@ export const NAV_LINKS = [
   { label: "Events", href: "/events" },
 ] as const;
 
+/**
+ * Build attribution.
+ *
+ * CitaTech built and maintains this site. The link is a real credit in the
+ * footer, not a hidden backlink: it names the company, opens in a new tab and
+ * carries rel="noopener noreferrer" like every other outbound link here.
+ */
+export const BUILT_BY = {
+  name: "CitaTech",
+  href: "https://citatech.cloud",
+} as const;
+
 /*
  * Her YouTube channel. Confirmed by Serah's team, note the underscore and the
  * capital K: @serah_Ke, not @serahke.

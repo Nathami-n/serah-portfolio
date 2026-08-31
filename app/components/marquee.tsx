@@ -1,6 +1,31 @@
-import { useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
 
 import { cn } from "~/lib/utils";
+
+/**
+ * Reduced-motion check without pulling in the motion library.
+ *
+ * This component's animation is pure CSS, so importing `useReducedMotion` from
+ * `motion/react` just to read a media query dragged the whole animation
+ * runtime into the bundle for a component that does not use it.
+ *
+ * Returns false on the server and on first client render so the markup matches,
+ * then corrects after hydration. Subscribes to changes, because a visitor can
+ * toggle the OS setting while the page is open.
+ */
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(query.matches);
+    const onChange = (event: MediaQueryListEvent) => setReduced(event.matches);
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, []);
+
+  return reduced;
+}
 
 /**
  * A slow horizontal marquee of song titles, used as a section divider.
@@ -36,7 +61,7 @@ interface MarqueeProps {
 }
 
 export function Marquee({ items, className, duration = 40 }: MarqueeProps) {
-  const reduced = useReducedMotion();
+  const reduced = usePrefersReducedMotion();
 
   if (items.length === 0) return null;
 

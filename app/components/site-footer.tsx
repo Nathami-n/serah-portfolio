@@ -1,7 +1,13 @@
 import { Link } from "react-router";
 
 import { Logo } from "~/components/logo";
-import { NAV_LINKS, SITE, SOCIAL_LINKS, whatsappLink } from "~/content/site";
+import {
+  BUILT_BY,
+  NAV_LINKS,
+  SITE,
+  SOCIAL_LINKS,
+  whatsappLink,
+} from "~/content/site";
 
 /**
  * Site footer.
@@ -75,16 +81,35 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-border/60 pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-border/60 pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {year} {SITE.name}
           </p>
-          <a
-            href={`mailto:${SITE.email}`}
-            className="-my-2 inline-block py-2 transition-colors hover:text-foreground"
-          >
-            {SITE.email}
-          </a>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <a
+              href={`mailto:${SITE.email}`}
+              className="-my-2 inline-block py-2 transition-colors hover:text-foreground"
+            >
+              {SITE.email}
+            </a>
+
+            {/*
+              Build credit. A real attribution, not a hidden backlink: it names
+              the company and behaves like every other outbound link here.
+            */}
+            <p>
+              Built by{" "}
+              <a
+                href={BUILT_BY.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="-my-2 inline-block py-2 text-foreground/80 underline-offset-4 transition-colors hover:text-primary hover:underline"
+              >
+                {BUILT_BY.name}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
