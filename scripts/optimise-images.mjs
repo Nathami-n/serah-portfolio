@@ -85,6 +85,7 @@ async function collect(dir, base = "") {
  */
 async function lqip(input) {
   const buffer = await sharp(input)
+    .rotate()
     .resize(20, null, { fit: "inside" })
     .blur(1.2)
     .jpeg({ quality: 40 })
@@ -118,10 +119,34 @@ async function main() {
 
   for (const rel of sources) {
     const input = path.join(SOURCE_DIR, rel);
-    const image = sharp(input);
-    const meta = await image.metadata();
+    const raw = await sharp(input).metadata();
     const stat = await sharp(input).toBuffer();
     totalIn += stat.byteLength;
+
+    /*
+     * EXIF orientation must be applied, not ignored. sharp strips EXIF on
+     * output, so an original carrying `orientation: 8` (rotate 270) is written
+     * out sideways while the source looks upright in any viewer, because
+     * viewers auto-rotate. vulindela1-3.jpg are all orientation 8 and rendered
+     * on their side in the first run of this script.
+     *
+     * `.rotate()` with no argument applies the EXIF orientation and clears it.
+     * It must come before `.resize()`, or the resize constrains the wrong axis.
+     *
+     * `meta` below is the POST-rotation geometry, which is what the layout and
+     * the manifest's aspect ratios need. Reading width/height off the raw file
+     * gives the pre-rotation values and produces wrong aspect ratios.
+     */
+    const swapsAxes = typeof raw.orientation === "number" && raw.orientation >= 5;
+    const meta = swapsAxes
+      ? { width: raw.height, height: raw.width }
+      : { width: raw.width, height: raw.height };
+    if (raw.orientation && raw.orientation > 1) {
+      console.log(
+        `    (EXIF orientation ${raw.orientation} applied: ` +
+          `${raw.width}x${raw.height} -> ${meta.width}x${meta.height})`,
+      );
+    }
 
     // Flatten `awards/foo.jpg` -> `awards-foo` so output is a single flat dir.
     const slug = rel
@@ -135,7 +160,10 @@ async function main() {
 
     const sizes = [];
     for (const width of widths) {
-      const resized = sharp(input).resize(width, null, {
+      // `.rotate()` BEFORE `.resize()`. Applying EXIF orientation after a
+      // resize would constrain the pre-rotation axis and write the image on
+      // its side, which is exactly what happened before this was added.
+      const resized = sharp(input).rotate().resize(width, null, {
         fit: "inside",
         withoutEnlargement: true,
       });
