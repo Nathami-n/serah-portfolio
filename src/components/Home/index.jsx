@@ -1,7 +1,0 @@
-export {default as HomeHeader} from './HomeHeader'
-export {default as HomeHero} from './HomeHero'
-export {default as HomeAbout} from './HomeAbout'
-export {default as HomeLink} from './HomeLink'
-export {default as HomeFooter} from './HomeFooter'
-export {default as HomeInterlude} from './HomeInterlude'
-export {default as Awards} from './Awards'

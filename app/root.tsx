@@ -1,0 +1,115 @@
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from "react-router";
+
+import { SiteFooter } from "~/components/site-footer";
+import { SiteHeader } from "~/components/site-header";
+import { buttonStyles } from "~/components/ui/button";
+import { SITE } from "~/content/site";
+
+import type { Route } from "./+types/root";
+import "./app.css";
+
+export const meta: Route.MetaFunction = () => [
+  { title: `${SITE.name} | ${SITE.tagline}` },
+  { name: "description", content: SITE.description },
+];
+
+export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+];
+
+/**
+ * The layout, defined ONCE.
+ *
+ * The old site had no layout route at all: every page component individually
+ * imported and rendered <HomeHeader /> and <HomeFooter />. The About page
+ * rendered AboutAddition, which rendered a SECOND <HomeFooter />, so that page
+ * shipped two footers.
+ */
+export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    /*
+     * `className="dark"` is set on the server so the first paint is already
+     * dark. This site does not offer a light toggle: it is photography-led and
+     * every image is low-key. The light tokens exist in app.css regardless,
+     * because a half-defined theme is how a token ends up undefined.
+     */
+    <html lang="en" className="dark">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#231d16" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <SiteHeader />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let heading = "Something went wrong";
+  let details = "An unexpected error occurred. Please try again.";
+  let stack: string | undefined;
+
+  if (isRouteErrorResponse(error)) {
+    heading = error.status === 404 ? "Page not found" : "Something went wrong";
+    details =
+      error.status === 404
+        ? "That page does not exist, or it has moved."
+        : error.statusText || details;
+  } else if (import.meta.env.DEV && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
+
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <SiteHeader />
+      <main className="flex flex-1 items-center">
+        <div className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-6 lg:px-8">
+          <div className="flex max-w-xl flex-col items-start gap-5">
+            <p className="font-display text-sm text-primary">
+              {isRouteErrorResponse(error) ? error.status : "Error"}
+            </p>
+            <h1 className="font-display text-3xl font-semibold sm:text-4xl">
+              {heading}
+            </h1>
+            <p className="text-muted-foreground">{details}</p>
+            <a href="/" className={buttonStyles({ className: "mt-2" })}>
+              Back to home
+            </a>
+          </div>
+          {stack ? (
+            <pre className="mt-8 w-full overflow-x-auto border border-border bg-muted p-4 text-xs">
+              <code>{stack}</code>
+            </pre>
+          ) : null}
+        </div>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

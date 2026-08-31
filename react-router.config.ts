@@ -16,4 +16,17 @@ import type { Config } from "@react-router/dev/config";
 export default {
   ssr: true,
   presets: [vercelPreset()],
+  /*
+   * Opt in to the v8 behaviours now, while the site is small and nothing
+   * depends on the v7 defaults. This clears the startup warnings and means the
+   * eventual v8 upgrade is a version bump rather than a migration. CitaPay and
+   * the POS both already run with v8_middleware on.
+   */
+  future: {
+    v8_middleware: true,
+    v8_splitRouteModules: true,
+    v8_viteEnvironmentApi: true,
+    v8_passThroughRequests: true,
+    v8_trailingSlashAwareDataRequests: true,
+  },
 } satisfies Config;
