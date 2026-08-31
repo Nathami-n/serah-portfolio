@@ -1,4 +1,23 @@
 @import "tailwindcss";
+
+/*
+ * Self-hosted via @fontsource-variable, no Google Fonts CDN, so there is no
+ * third-party request blocking first paint. The old site had two blocking
+ * @import calls to fonts.googleapis.com.
+ *
+ * NOTE ON SUBSETS: these imports pull every subset the families ship
+ * (cyrillic, greek, vietnamese, latin-ext, latin), so ten .woff2 files land in
+ * the build. A visitor never pays for the eight they do not need, because each
+ * @font-face carries a unicode-range and browsers only fetch matching subsets;
+ * measured on this site, only inter-latin and bricolage-latin are ever
+ * requested. It is build weight, not visitor weight.
+ *
+ * Narrowing it is not currently possible cleanly: these variable packages
+ * expose no per-subset CSS entry point (no `inter/latin.css`), only
+ * all-subset bundles. Importing individual files out of `files/` would mean
+ * hand-writing the @font-face blocks and hardcoding hashed filenames, which
+ * breaks on every package update. Not worth it for build-only weight.
+ */
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/bricolage-grotesque";
 
