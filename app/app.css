@@ -1,0 +1,304 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/bricolage-grotesque";
+
+/*
+ * =============================================================================
+ *  Serah Ke — Design Tokens
+ * =============================================================================
+ *
+ * Structure is ported verbatim from `@cita-tech/ui` (framework/packages/ui/
+ * src/styles.css) and CitaPay (packages/ui/src/styles/globals.css) so this site
+ * uses the same design system as every other repo. The token NAMES, the
+ * surface/foreground pairing, the `@theme inline` mapping step and the
+ * class-based dark variant are all identical. Only the brand hue differs, which
+ * is exactly how CitaTech orange and CitaPay red already differ from each other.
+ *
+ * HOW THIS WORKS (read before adding colors):
+ *
+ *  1. Raw values live as CSS variables in `:root` (light) and `.dark` (dark),
+ *     in semantic pairs: a surface + its readable text, e.g.
+ *       --card / --card-foreground,  --primary / --primary-foreground.
+ *
+ *  2. `@theme inline` maps each raw variable to a Tailwind color utility,
+ *     e.g. `--color-primary: var(--primary)` makes `bg-primary` work. That
+ *     mapping is what turns a token into a class. Without it the class does
+ *     not exist.
+ *
+ *  3. In components, NEVER hardcode a hex/oklch value. Always use the utility.
+ *     To add a color, define the pair in BOTH :root and .dark, THEN map it in
+ *     @theme inline. All three steps, or it does not work.
+ *
+ * BRAND — warm gold, oklch(0.78 0.14 75).
+ *
+ * This is not an arbitrary pick. The previous site had no brand colour at all:
+ * `serahLogo.svg` is pure #000000 throughout, and the pages used scattered
+ * blue/green/navy/red with no relationship to each other. The gold is sampled
+ * from her actual photography, which is remarkably consistent:
+ *   - awards/trophy.jpg      a gold honorary award trophy
+ *   - awards/studio.jpg      amber wall lights, yellow flowers, dark backdrop
+ *   - awards/serahDancing.jpg warm stage wash in a dark venue
+ *   - awards/carnival.jpg    warm indoor event lighting
+ * Gold on dark is what her images already look like, so the accent belongs to
+ * the photographs rather than fighting them.
+ *
+ * THIS SITE IS DARK BY DEFAULT. Unlike the product apps, which open light and
+ * offer a toggle, a musician's site is photography-led and the imagery is all
+ * low-key. The light theme is still fully defined below, because a half-defined
+ * theme is how a token ends up undefined in one mode and the page breaks.
+ * =============================================================================
+ */
+
+/* Enable the `dark:` variant via a `.dark` class anywhere up the tree. */
+@custom-variant dark (&:is(.dark *));
+
+html {
+  /* Dark is the default here; `.light` flips it back. */
+  color-scheme: dark;
+}
+.dark {
+  color-scheme: dark;
+}
+.light {
+  color-scheme: light;
+}
+
+/* ----------------------------------------------------------------------------
+ * LIGHT THEME
+ *
+ * Defined for completeness and used by the `.light` class. Warm off-white
+ * rather than pure white, so the gold accent does not look orphaned against a
+ * clinical ground.
+ * ------------------------------------------------------------------------- */
+:root {
+  --background: oklch(0.99 0.005 85);
+  --foreground: oklch(0.16 0.01 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.01 60);
+
+  /* Brand — warm gold, darkened for contrast against a light ground. */
+  --primary: oklch(0.62 0.13 72);
+  --primary-foreground: oklch(0.99 0.01 85);
+
+  --secondary: oklch(0.96 0.008 80);
+  --secondary-foreground: oklch(0.21 0.01 60);
+  --muted: oklch(0.96 0.008 80);
+  --muted-foreground: oklch(0.52 0.015 65);
+  --accent: oklch(0.95 0.03 78);
+  --accent-foreground: oklch(0.21 0.01 60);
+
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --success: oklch(0.6 0.17 155);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.72 0.15 65);
+  --warning-foreground: oklch(0.145 0 0);
+  --info: oklch(0.6 0.19 250);
+  --info-foreground: oklch(1 0 0);
+
+  --border: oklch(0.9 0.01 78);
+  --input: oklch(0.9 0.01 78);
+  --ring: oklch(0.62 0.13 72);
+
+  --radius: 0.625rem;
+}
+
+/* ----------------------------------------------------------------------------
+ * LIGHT THEME, explicit selector
+ *
+ * Repeated under `.light` so an explicit light choice beats the `.dark` block
+ * below at equal specificity. Keep the two in sync. Same arrangement as the
+ * landing page.
+ * ------------------------------------------------------------------------- */
+.light {
+  --background: oklch(0.99 0.005 85);
+  --foreground: oklch(0.16 0.01 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.01 60);
+  --primary: oklch(0.62 0.13 72);
+  --primary-foreground: oklch(0.99 0.01 85);
+  --secondary: oklch(0.96 0.008 80);
+  --secondary-foreground: oklch(0.21 0.01 60);
+  --muted: oklch(0.96 0.008 80);
+  --muted-foreground: oklch(0.52 0.015 65);
+  --accent: oklch(0.95 0.03 78);
+  --accent-foreground: oklch(0.21 0.01 60);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --success: oklch(0.6 0.17 155);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.72 0.15 65);
+  --warning-foreground: oklch(0.145 0 0);
+  --info: oklch(0.6 0.19 250);
+  --info-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.01 78);
+  --input: oklch(0.9 0.01 78);
+  --ring: oklch(0.62 0.13 72);
+}
+
+/* ----------------------------------------------------------------------------
+ * DARK THEME — the default for this site.
+ *
+ * Near-black with a trace of warmth (hue 60 at very low chroma) rather than the
+ * products' pure neutral charcoal. Photography of warm stage lighting sits
+ * badly on a cold grey ground.
+ * ------------------------------------------------------------------------- */
+.dark {
+  --background: oklch(0.14 0.006 60);
+  --foreground: oklch(0.96 0.005 85);
+  --card: oklch(0.18 0.008 60);
+  --card-foreground: oklch(0.96 0.005 85);
+  --popover: oklch(0.18 0.008 60);
+  --popover-foreground: oklch(0.96 0.005 85);
+
+  /* Brand — full-strength gold. Reads clearly against the dark ground. */
+  --primary: oklch(0.78 0.14 75);
+  --primary-foreground: oklch(0.18 0.02 60);
+
+  --secondary: oklch(0.25 0.01 60);
+  --secondary-foreground: oklch(0.96 0.005 85);
+  --muted: oklch(0.23 0.008 60);
+  --muted-foreground: oklch(0.66 0.012 70);
+  --accent: oklch(0.28 0.04 72);
+  --accent-foreground: oklch(0.96 0.005 85);
+
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --success: oklch(0.73 0.15 155);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.8 0.15 65);
+  --warning-foreground: oklch(0.145 0 0);
+  --info: oklch(0.72 0.18 250);
+  --info-foreground: oklch(1 0 0);
+
+  /* Lines / fields — subtle white overlays, same approach as the products. */
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.78 0.14 75);
+}
+
+/* ----------------------------------------------------------------------------
+ * TOKEN → UTILITY MAPPING
+ *
+ * This block is what makes `bg-background`, `text-muted-foreground` etc. exist.
+ * A token defined above but absent here has no class.
+ * ------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /*
+   * Two faces, each with a job. Inter-for-everything is the single most
+   * reliable "generated page" typography tell, so headings get their own face.
+   * Both are self-hosted via @fontsource-variable — no Google Fonts CDN, so
+   * there is no third-party request blocking first paint. The old site had two
+   * blocking @import calls to fonts.googleapis.com.
+   */
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-display:
+    "Bricolage Grotesque Variable", "Inter Variable", ui-sans-serif, system-ui,
+    sans-serif;
+}
+
+/* ----------------------------------------------------------------------------
+ * BASE
+ * ------------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    /*
+     * NOTE: `overflow-x: hidden` is deliberately NOT set. It masks overflow
+     * rather than fixing it and hides the next regression. The old site set
+     * `overflow-clip` / `overflow-x-hidden` in six places for exactly this
+     * reason. Verify instead, at 375 / 390 / 768 / 1024 / 1440:
+     *   document.documentElement.scrollWidth > document.documentElement.clientWidth
+     * must be false.
+     */
+  }
+
+  /*
+   * Tailwind preflight sets `max-width: none` on img, which beats a rule in
+   * @layer base. Constrain on the element itself. This was one of three
+   * documented causes of horizontal overflow on the landing page.
+   */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Headings take the display face by default so a new heading cannot silently
+   * render in Inter. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  /* A visible, branded focus ring on every interactive element. The old site
+   * had no focus states at all, which made it unusable by keyboard. */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * REDUCED MOTION
+ *
+ * Site-wide kill switch. Individual motion primitives also check the media
+ * query, but this guarantees that anything hand-rolled or missed still
+ * collapses rather than animating at a user who asked it not to.
+ * ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
