@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { Image } from "~/components/image";
 import { Reveal } from "~/components/motion/primitives";
 import { Container } from "~/components/section";
-import { AWARD } from "~/content/bio";
+import { AWARDS } from "~/content/bio";
 
 /**
  * The story section.
@@ -50,19 +50,21 @@ export function Story() {
             </Reveal>
 
             {/*
-              The award, stated plainly. It is verifiable: the trophy is
-              engraved with her name and the Tuko article reports it
-              independently. No invented metrics, no fabricated quotes.
+              The awards, stated plainly. Sources are recorded in content/bio.ts. No invented metrics, no fabricated quotes.
             */}
             <Reveal index={2}>
-              <div className="mt-2 border-l-2 border-primary pl-5">
-                <p className="font-display text-lg font-medium">
-                  {AWARD.title}
-                </p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {AWARD.presenter}
-                </p>
-              </div>
+              <ul className="mt-2 flex flex-col gap-4">
+                {AWARDS.map((award) => (
+                  <li key={award.title} className="border-l-2 border-primary pl-5">
+                    <p className="font-display text-lg font-medium">
+                      {award.title}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {award.presenter}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
 
             <Reveal index={3}>

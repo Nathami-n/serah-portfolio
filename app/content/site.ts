@@ -131,3 +131,25 @@ export const SOCIAL_LINKS = [
     href: "https://x.com/NyabokeSerah",
   },
 ] as const;
+
+/**
+ * "Buy me a coffee", paid through CitaPay.
+ *
+ * The checkout opens embedded in a dialog so fans pay without leaving the
+ * site. `href` is also the fallback: some card issuers' 3-D Secure screens
+ * refuse to run inside an iframe, so the dialog always offers "open in a new
+ * tab". Change the link here and every surface follows.
+ */
+export const SUPPORT = {
+  href: "https://pay.citatech.cloud/pay/30ac43508511",
+  heading: "Buy Serah a coffee",
+  body: "Enjoying the music? A coffee keeps the covers coming. Pay by M-Pesa or card, right here on the page.",
+  cta: "Buy a coffee",
+  footerCta: "Buy Serah a coffee",
+  floatingCta: "Buy me a coffee",
+  dialogTitle: "Buy Serah a coffee",
+  poweredBy: "Secure payment by",
+  provider: { name: "CitaPay", href: "https://pay.citatech.cloud", logo: "/citapay-logo.svg" },
+  fallback: "Trouble paying here? Open the checkout in a new tab",
+  close: "Close",
+} as const;

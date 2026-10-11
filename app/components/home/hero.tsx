@@ -78,7 +78,7 @@ export function Hero() {
           <Parallax distance={28}>
             <Image
               slug={HERO_PHOTO}
-              alt="Serah Ke seated against a dark panelled wall, laughing, holding a bouquet of yellow flowers."
+              alt="Serah Ke lying on a glossy floor, chin on her hands, smiling, in a bright multicoloured print dress."
               priority
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="rounded-lg"

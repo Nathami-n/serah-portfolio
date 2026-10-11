@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 256">
+    <defs>
+      <clipPath id="discClip-c2">
+        <circle cx="200" cy="128" r="100"/>
+      </clipPath>
+    </defs>
+    <g>
+      <!-- Solid silhouette: disc + tab -->
+      <circle cx="200" cy="128" r="100" fill="#ff2056"/>
+      <rect x="20" y="97" width="190" height="62" rx="31" fill="#ff2056"/>
+
+      <!-- Card detail clipped to disc -->
+      <g clip-path="url(#discClip-c2)">
+        <!-- White card plate (extends past disc right; clipped) -->
+        <rect x="150" y="78" width="190" height="100" rx="10" fill="#ffffff"/>
+        <!-- Brand magnetic stripe -->
+        <rect x="150" y="96" width="190" height="16" fill="#ff2056"/>
+        <!-- Small info chip -->
+        <rect x="166" y="150" width="36" height="12" rx="2" fill="#ff2056"/>
+        <rect x="208" y="150" width="14" height="12" rx="2" fill="#ff2056"/>
+      </g>
+    </g></svg>

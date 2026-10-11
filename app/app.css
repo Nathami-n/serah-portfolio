@@ -339,3 +339,30 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/*
+ * Support (CitaPay) sheet. Slides up from the bottom on phones, fades and
+ * lifts in on larger screens where it sits centred.
+ */
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.support-sheet[open] {
+  animation: sheet-up 280ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+@media (min-width: 40rem) {
+  .support-sheet[open] {
+    animation-name: sheet-in;
+    animation-duration: 200ms;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .support-sheet[open] {
+    animation: none;
+  }
+}

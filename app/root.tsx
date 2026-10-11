@@ -11,6 +11,8 @@ import { Image } from "~/components/image";
 import { PageTransition } from "~/components/motion/page-transition";
 import { ScrollProgress } from "~/components/motion/primitives";
 import { SiteFooter } from "~/components/site-footer";
+import { SupportDialog, TRIGGER_STYLE } from "~/components/support-dialog";
+import { SUPPORT } from "~/content/site";
 import { SiteHeader } from "~/components/site-header";
 import { buttonStyles } from "~/components/ui/button";
 import { SITE } from "~/content/site";
@@ -83,6 +85,7 @@ export default function App() {
         </PageTransition>
       </main>
       <SiteFooter />
+      <SupportDialog trigger={TRIGGER_STYLE.floating} label={SUPPORT.floatingCta} />
     </div>
   );
 }

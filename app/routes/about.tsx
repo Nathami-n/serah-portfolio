@@ -4,8 +4,10 @@ import { LinkSquare02Icon } from "@hugeicons/core-free-icons";
 import { Image } from "~/components/image";
 import { Reveal } from "~/components/motion/primitives";
 import { Container, Section } from "~/components/section";
-import { AWARD, BIO_PARAGRAPHS, FACTS } from "~/content/bio";
+import { SupportDialog } from "~/components/support-dialog";
+import { AWARDS, BIO_PARAGRAPHS, FACTS } from "~/content/bio";
 import { PRESS } from "~/content/music";
+import { SUPPORT } from "~/content/site";
 import { breadcrumbSchema, pageMeta } from "~/lib/meta";
 
 import type { Route } from "./+types/about";
@@ -14,9 +16,9 @@ export const meta: Route.MetaFunction = () =>
   pageMeta({
     title: "About",
     description:
-      "Serah Nyaboke, known as Serah Ke, sings Rhumba and Zilizopendwa: Franco, Mpongo Love, Les Wanyika. Honorary Award winner, Music Industry.",
+      "Serah Nyaboke, known as Serah Ke, sings Rhumba and Zilizopendwa: Franco, Mpongo Love, Les Wanyika. Rising Star, Scholars Media Awards Africa, and Honorary Award winner, Music Industry.",
     path: "/about",
-    image: "awards-studio",
+    image: "portrait-smile",
   });
 
 /**
@@ -75,8 +77,8 @@ export default function About() {
             {/* top-24 clears the sticky header, which is h-16 / lg:h-18. */}
             <div className="min-w-0 lg:sticky lg:top-24">
               <Image
-                slug="awards-studio"
-                alt="Serah seated on a stool against a dark panelled wall, holding a bouquet of yellow flowers."
+                slug="portrait-smile"
+                alt="Serah lying on a glossy floor, chin resting on her hands, smiling, in a bright multicoloured print dress with her locs in a high bun."
                 sizes="(min-width: 1024px) 38vw, 100vw"
                 className="rounded-lg"
               />
@@ -106,17 +108,23 @@ export default function About() {
               <h2 className="font-display text-2xl font-semibold sm:text-3xl">
                 Recognition
               </h2>
-              <div className="border-l-2 border-primary pl-5">
-                <p className="font-display text-lg font-medium">
-                  {AWARD.title}
-                </p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {AWARD.presenter}
-                </p>
-                <p className="mt-3 max-w-[46ch] text-sm leading-[1.65] text-muted-foreground">
-                  {AWARD.note}
-                </p>
-              </div>
+              <ul className="flex flex-col gap-6">
+                {AWARDS.map((award) => (
+                  <li key={award.title} className="border-l-2 border-primary pl-5">
+                    <p className="font-display text-lg font-medium">
+                      {award.title}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {award.presenter}
+                    </p>
+                    {award.note ? (
+                      <p className="mt-3 max-w-[46ch] text-sm leading-[1.65] text-muted-foreground">
+                        {award.note}
+                      </p>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className="flex min-w-0 flex-col gap-5">
@@ -156,6 +164,23 @@ export default function About() {
           </div>
         </Container>
       </Section>
+
+      {/* Fan support, paid through an embedded CitaPay checkout. */}
+      <section className="border-t border-border/60 bg-card/40 py-16 sm:py-20">
+        <Container>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex min-w-0 flex-col gap-3">
+              <h2 className="font-display text-2xl font-semibold sm:text-3xl">
+                {SUPPORT.heading}
+              </h2>
+              <p className="max-w-[52ch] text-base leading-[1.65] text-muted-foreground">
+                {SUPPORT.body}
+              </p>
+            </div>
+            <SupportDialog size="lg" className="w-full shrink-0 sm:w-auto" />
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

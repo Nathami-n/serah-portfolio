@@ -86,6 +86,7 @@ const INCLUDE = new Set([
   "awards-machoka",
   "awards-kalonzo2",
   "serahabout",
+  "portrait-smile",
 ]);
 
 /** `awards/foo.jpg` -> `awards-foo`. Shared by the filter and the writer. */

@@ -33,6 +33,12 @@ export const GALLERY: readonly Photo[] = [
     aspect: "portrait",
   },
   {
+    slug: "portrait-smile",
+    alt: "Serah lying on a glossy floor, chin resting on her hands, smiling, in a bright multicoloured print dress.",
+    caption: "Portrait",
+    aspect: "portrait",
+  },
+  {
     slug: "awards-carnival",
     alt: "Serah singing into a handheld microphone at a seated event, guests at tables around her.",
     caption: "Performing",
@@ -99,7 +105,7 @@ export const GALLERY: readonly Photo[] = [
  */
 
 /** The image the hero uses. Her strongest portrait. */
-export const HERO_PHOTO = "awards-studio";
+export const HERO_PHOTO = "portrait-smile";
 
 /** Open Graph / social share image. Landscape reads better in a link preview. */
 export const OG_PHOTO = "awards-sit";
