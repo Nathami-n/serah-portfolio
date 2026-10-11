@@ -150,6 +150,7 @@ export const SUPPORT = {
   dialogTitle: "Buy Serah a coffee",
   poweredBy: "Secure payment by",
   provider: { name: "CitaPay", href: "https://pay.citatech.cloud", logo: "/citapay-logo.svg" },
+  loading: "Loading secure checkout",
   fallback: "Trouble paying here? Open the checkout in a new tab",
   close: "Close",
 } as const;

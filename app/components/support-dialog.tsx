@@ -1,5 +1,5 @@
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Cancel01Icon, Coffee02Icon } from "@hugeicons/core-free-icons";
+import { Cancel01Icon, Coffee02Icon, Loading03Icon } from "@hugeicons/core-free-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { buttonStyles } from "~/components/ui/button";
@@ -48,6 +48,9 @@ export function SupportDialog({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  const onFrameLoad = useCallback(() => setLoaded(true), []);
 
   const open = useCallback(() => {
     setMounted(true);
@@ -112,15 +115,44 @@ export function SupportDialog({
             </button>
           </div>
 
-          <div className="min-h-0 flex-1 bg-white">
+          <div className="relative min-h-0 flex-1 bg-background">
             {mounted ? (
               <iframe
                 src={SUPPORT.href}
                 title={`${SUPPORT.dialogTitle}, ${SUPPORT.provider.name} checkout`}
                 allow="payment"
-                className="size-full border-0"
+                onLoad={onFrameLoad}
+                className={cn(
+                  "size-full border-0 transition-opacity duration-300",
+                  loaded ? "opacity-100" : "opacity-0",
+                )}
               />
             ) : null}
+
+            {/* Covers the blank frame until the checkout has painted. */}
+            {loaded ? null : (
+              <div
+                role="status"
+                className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-muted-foreground"
+              >
+                <img
+                  src={SUPPORT.provider.logo}
+                  alt=""
+                  width={40}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+                <div className="flex items-center gap-2 text-sm">
+                  <HugeiconsIcon
+                    icon={Loading03Icon}
+                    size={18}
+                    strokeWidth={1.8}
+                    className="animate-spin motion-reduce:animate-none"
+                  />
+                  {SUPPORT.loading}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col items-start gap-1 border-t border-border/60 px-5 py-3 text-xs text-muted-foreground">
