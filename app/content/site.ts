@@ -146,6 +146,7 @@ export const SUPPORT = {
   body: "Enjoying the music? A coffee keeps the covers coming. Pay by M-Pesa or card, right here on the page.",
   cta: "Buy a coffee",
   footerCta: "Buy Serah a coffee",
+  floatingCta: "Buy me a coffee",
   dialogTitle: "Buy Serah a coffee",
   poweredBy: "Secure payment by",
   provider: { name: "CitaPay", href: "https://pay.citatech.cloud", logo: "/citapay-logo.svg" },
