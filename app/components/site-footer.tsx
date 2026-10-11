@@ -1,11 +1,13 @@
 import { Link } from "react-router";
 
 import { Logo } from "~/components/logo";
+import { SupportDialog, TRIGGER_STYLE } from "~/components/support-dialog";
 import {
   BUILT_BY,
   NAV_LINKS,
   SITE,
   SOCIAL_LINKS,
+  SUPPORT,
   whatsappLink,
 } from "~/content/site";
 
@@ -38,6 +40,7 @@ export function SiteFooter() {
             >
               Enquire about a booking
             </a>
+            <SupportDialog trigger={TRIGGER_STYLE.link} label={SUPPORT.footerCta} className="-mt-2" />
           </div>
 
           <div className="grid grid-cols-2 gap-10 sm:gap-16">
